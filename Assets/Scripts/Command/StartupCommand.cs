@@ -7,6 +7,9 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
+    /// <summary>
+    /// 加载指定控制器
+    /// </summary>
     public class StartupCommand : SimpleCommand
     {
         public override void Execute(INotification notification)
