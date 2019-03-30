@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4852721319378873658}
   - component: {fileID: 4852721319378873660}
   - component: {fileID: 4852721319378873659}
-  - component: {fileID: 4852721319378873661}
+  - component: {fileID: 7695510248515874246}
   m_Layer: 5
   m_Name: HomePanel
   m_TagString: Untagged
@@ -78,18 +78,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &4852721319378873661
-MonoBehaviour:
+--- !u!225 &7695510248515874246
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4852721319378873657}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526b9f64aff76ed4daa6bb66f14c88bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7470910297272281931
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,8 +102,9 @@ GameObject:
   - component: {fileID: 6175446756384822101}
   - component: {fileID: 7768127905303243335}
   - component: {fileID: 7231686645928187413}
+  - component: {fileID: 3244962100074800376}
   m_Layer: 5
-  m_Name: SettingButton
+  m_Name: settingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +208,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!95 &3244962100074800376
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470910297272281931}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 11f16c4619f9c4c98ac9bff000cc9715, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7148288138688787419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 5874109023082329456, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
         type: 3}
       propertyPath: m_Name
-      value: PlayButton
+      value: playButton
       objectReference: {fileID: 0}
     - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
         type: 3}
@@ -398,6 +418,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -940
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 253.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 252
       objectReference: {fileID: 0}
     - target: {fileID: 5952751844612166626, guid: 7d6759d88b2e7dd4f9a862ad8018d189,
         type: 3}

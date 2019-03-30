@@ -24,6 +24,7 @@ namespace PureMVC.Tutorial
 
             gameStart.AddComponent<ResourcesManager>();
             gameStart.AddComponent<SoundManager>();
+            //创建数据控制Proxy
         }
     }
 }

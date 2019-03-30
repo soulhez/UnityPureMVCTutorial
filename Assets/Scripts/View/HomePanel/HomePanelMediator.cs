@@ -20,6 +20,46 @@ namespace PureMVC.Tutorial
         {
         }
 
+        public HomePanelView GetHomePanelView
+        {
+            get
+            {
+                return ViewComponent as HomePanelView;
+            }
+        }
+
+        public override void OnRegister()
+        {
+            base.OnRegister();
+            GetHomePanelView.PlayAction += PlayActionHandle;
+            GetHomePanelView.SettingAction += SettingActionHandle;
+
+            //注册命令
+            ApplicationFacade.Instance.RegisterCommand(Notification.OpenSettingCommond, () => new OpenSettingCommond());
+        }
+
+
+        public override void OnRemove()
+        {
+            base.OnRemove();
+            GetHomePanelView.PlayAction = null;
+            GetHomePanelView.SettingAction = null;
+            //注销命令
+            ApplicationFacade.Instance.RemoveCommand(Notification.OpenSettingCommond);
+        }
+
+
+        public void PlayActionHandle()
+        {
+            this.Log("加载商店面板");
+        }
+        public void SettingActionHandle()
+        {
+            this.Log("加载设置面板");
+            GetHomePanelView.OpenHomePanel();
+            SendNotification(Notification.OpenSettingCommond, null,"UI");
+        }
+
 
         public override string[] ListNotificationInterests()
         {
@@ -42,18 +82,6 @@ namespace PureMVC.Tutorial
                 default:
                     break;
             }
-        }
-
-
-        public override void OnRegister()
-        {
-            base.OnRegister();
-        }
-
-
-        public override void OnRemove()
-        {
-            base.OnRemove();
         }
     }
 }

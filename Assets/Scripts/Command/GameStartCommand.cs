@@ -19,8 +19,11 @@ namespace PureMVC.Tutorial
             //获取相关数据
             //加载对应的UI
             GameObject canvas = GameObject.Find("Canvas");
-           GameObject tempObj = UnityEngine.Object.Instantiate( Resources.Load<GameObject>("HomePanel"));
+           GameObject tempObj = UnityEngine.Object.Instantiate( Resources.Load<GameObject>("Prefab/HomePanel"));
+            tempObj.name = "HomePanel";
             tempObj.transform.SetParent(canvas.transform, false);
+            tempObj.AddComponent<HomePanelView>();
+
         }
     }
 }

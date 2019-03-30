@@ -20,6 +20,34 @@ namespace PureMVC.Tutorial
         {
         }
 
+
+        public HomePanelView GetHomePanelView
+        {
+            get
+            {
+                return ViewComponent as HomePanelView;
+            }
+        }
+
+        public override void OnRegister()
+        {
+            base.OnRegister();
+            GetHomePanelView.SettingAction += SettingActionHandle;
+        }
+
+
+        public override void OnRemove()
+        {
+            base.OnRemove();
+            GetHomePanelView.SettingAction = null;
+        }
+
+        public void SettingActionHandle()
+        {
+            this.Log("加载设置面板");
+        }
+
+
         public override string[] ListNotificationInterests()
         {
             List<string> listNotificationInterests = new List<string>();
@@ -41,18 +69,6 @@ namespace PureMVC.Tutorial
                 default:
                     break;
             }
-        }
-
-
-        public override void OnRegister()
-        {
-            base.OnRegister();
-        }
-
-
-        public override void OnRemove()
-        {
-            base.OnRemove();
         }
     }
 }

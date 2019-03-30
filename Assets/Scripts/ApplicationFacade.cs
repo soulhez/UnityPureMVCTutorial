@@ -32,12 +32,19 @@ namespace PureMVC.Tutorial
             RegisterCommand(Notification.LoginSuccessProxy, () => new GetPrefsCommand());
         }
 
+        protected override void InitializeModel()
+        {
+            base.InitializeModel();
+            RegisterProxy(new GloalDataProxy("GloalProxy"));
+        }
 
         public void StartUpHandle()
         {
             SendNotification(Notification.StartUp);
             SendNotification(Notification.GameStart);
         }
+
+
     }
 }
 

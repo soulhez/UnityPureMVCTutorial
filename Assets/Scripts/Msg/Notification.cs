@@ -20,5 +20,6 @@ namespace PureMVC.Tutorial
         public const string GameStart = "GameStart";
         public const string LoginSuccess = "LoginSuccess";
         public const string LoginSuccessProxy = "LoginSuccessProxy";
+        public const string OpenSettingCommond = "OpenSettingCommond";
     }
 }

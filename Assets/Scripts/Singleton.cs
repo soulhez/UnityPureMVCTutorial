@@ -34,7 +34,7 @@ namespace PureMVC.Tutorial
         {
             instance = this;
         }
-        void Start()
+        public void Start()
         {
         
         }

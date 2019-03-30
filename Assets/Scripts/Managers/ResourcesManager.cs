@@ -16,9 +16,48 @@ namespace PureMVC.Tutorial
 {
     public class ResourcesManager : Singleton<ResourcesManager>
     {
-        void Start()
-        {
+        public Dictionary<string, UnityEngine.Object> resourcesDictionary = new Dictionary<string, UnityEngine.Object>();
 
+        public static ResourcesManager GetInstance
+        {
+            get
+            {
+                return instance as ResourcesManager;
+            }
+        }
+
+        public GameObject LoadPrefab(string prefabName)
+        {
+            GameObject tempObj = null;
+            if (!resourcesDictionary.ContainsKey(prefabName))
+            {
+                resourcesDictionary[prefabName] = Resources.Load<GameObject>("Prefab/" + prefabName);
+            }
+            tempObj = Instantiate(resourcesDictionary[prefabName] as GameObject);
+            tempObj.name = prefabName;
+            return tempObj;
+        }
+
+        public Sprite LoadSprite(string spriteName)
+        {
+            Sprite tempSprite = null;
+            if (!resourcesDictionary.ContainsKey(spriteName))
+            {
+                resourcesDictionary[spriteName] = Resources.Load<GameObject>("Sprite/" + spriteName);
+            }
+            tempSprite = resourcesDictionary[spriteName] as Sprite;
+            return tempSprite;
+        }
+
+        public AudioClip LoadAudioClip(string audioClipName)
+        {
+            AudioClip tempAudioClip = null;
+            if (!resourcesDictionary.ContainsKey(audioClipName))
+            {
+                resourcesDictionary[audioClipName] = Resources.Load<GameObject>("AudioClip/" + audioClipName);
+            }
+            tempAudioClip = resourcesDictionary[audioClipName] as AudioClip;
+            return tempAudioClip;
         }
     }
 }

@@ -11,22 +11,18 @@ using PureMVC.Patterns.Facade;
 using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
+using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class SoundManager : Singleton<SoundManager>
+    public class OpenSettingCommond : SimpleCommand
     {
-
-        void Start()
+        public override void Execute(INotification notification)
         {
-        
+            base.Execute(notification);
+            GameObject canvasObj = GameObject.Find("Canvas");
+            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
+            tempObj.transform.SetParent(canvasObj.transform, false);
         }
-
-        public void PlayMusic()
-        {
-
-        }
-
     }
 }
-

@@ -11,22 +11,22 @@ using PureMVC.Patterns.Facade;
 using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
+using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class SoundManager : Singleton<SoundManager>
+    public class PlayGameCommond : MonoBehaviour
     {
-
+        // Start is called before the first frame update
         void Start()
         {
         
         }
 
-        public void PlayMusic()
+        // Update is called once per frame
+        void Update()
         {
-
+        
         }
-
     }
 }
-
