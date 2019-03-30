@@ -20,9 +20,12 @@ namespace PureMVC.Tutorial
         public override void Execute(INotification notification)
         {
             base.Execute(notification);
+
             GameObject canvasObj = GameObject.Find("Canvas");
             GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
             tempObj.transform.SetParent(canvasObj.transform, false);
+
+            //DoSomething....
         }
     }
 }

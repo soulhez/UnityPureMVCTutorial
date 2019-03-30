@@ -18,7 +18,6 @@ namespace PureMVC.Tutorial
     {
         #region Mediator
         public const string homePanelMediatorName = "HomePanelMediator";
-        public const string homePanelMediatorExtensionName = "HomePanelMediatorExtension";
 
         public HomePanelMediator homePanelMediator = null;
         public HomePanelMediatorExtension homePanelMediatorExtension = null;
@@ -65,10 +64,7 @@ namespace PureMVC.Tutorial
 
         private void RegisterMediator()
         {
-            homePanelMediator = new HomePanelMediator(homePanelMediatorName, this);
-            homePanelMediatorExtension = new HomePanelMediatorExtension(homePanelMediatorExtensionName, this);
-
-            ApplicationFacade.Instance.RegisterMediator(homePanelMediator);
+            ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(homePanelMediatorName, this));
         }
 
         private void UnRegisterMediator()

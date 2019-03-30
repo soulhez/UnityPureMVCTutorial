@@ -43,7 +43,7 @@ namespace PureMVC.Tutorial
             Sprite tempSprite = null;
             if (!resourcesDictionary.ContainsKey(spriteName))
             {
-                resourcesDictionary[spriteName] = Resources.Load<GameObject>("Sprite/" + spriteName);
+                resourcesDictionary[spriteName] = Resources.Load<Sprite>("Sprite/" + spriteName);
             }
             tempSprite = resourcesDictionary[spriteName] as Sprite;
             return tempSprite;
@@ -54,7 +54,7 @@ namespace PureMVC.Tutorial
             AudioClip tempAudioClip = null;
             if (!resourcesDictionary.ContainsKey(audioClipName))
             {
-                resourcesDictionary[audioClipName] = Resources.Load<GameObject>("AudioClip/" + audioClipName);
+                resourcesDictionary[audioClipName] = Resources.Load<AudioClip>("AudioClip/" + audioClipName);
             }
             tempAudioClip = resourcesDictionary[audioClipName] as AudioClip;
             return tempAudioClip;
