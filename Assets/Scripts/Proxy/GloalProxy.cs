@@ -21,6 +21,14 @@ using Custom.Log;
         {
         }
 
+        public GloalData GetGloalData
+        {
+            get
+            {
+                return Data as GloalData;
+            }
+        }
+
         public override void OnRegister()
         {
             base.OnRegister();
@@ -38,7 +46,11 @@ using Custom.Log;
         public float MusicVolume { get; set; }
         public float SoundVolume { get; set; }
         public int ThemeIndex { get; set; }
+        public int ItemCount { get; set; }
 
+        public int GoldCupC { get; set; }
+        public int SilverCup { get; set; }
+        public int BronzeCup { get; set; }
     }
 }
 

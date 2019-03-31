@@ -33,9 +33,6 @@ namespace PureMVC.Tutorial
             base.OnRegister();
             GetHomePanelView.PlayAction += PlayActionHandle;
             GetHomePanelView.SettingAction += SettingActionHandle;
-
-            //注册命令
-            ApplicationFacade.Instance.RegisterCommand(Notification.OpenSettingCommond, () => new OpenSettingCommond());
         }
 
 
@@ -44,8 +41,6 @@ namespace PureMVC.Tutorial
             base.OnRemove();
             GetHomePanelView.PlayAction = null;
             GetHomePanelView.SettingAction = null;
-            //注销命令
-            ApplicationFacade.Instance.RemoveCommand(Notification.OpenSettingCommond);
         }
 
 

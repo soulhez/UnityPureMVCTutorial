@@ -15,18 +15,17 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class OpenSettingCommond : SimpleCommand
+    public class SaveSettingDataCommond : SimpleCommand
     {
         public override void Execute(INotification notification)
         {
             base.Execute(notification);
-
-            GameObject canvasObj = GameObject.Find("Canvas");
-            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
-            tempObj.transform.SetParent(canvasObj.transform, false);
-            tempObj.name = "SettingPanel";
-
-            tempObj.AddComponent<SettingPanelView>();
+            SettingPanelView settingPanelView = notification.Body as SettingPanelView;
+            GloalDataProxy gloalDataProxy = Facade.RetrieveProxy("GloalDataProxy") as GloalDataProxy;
+            GloalData gloalData = gloalDataProxy.GetGloalData;
+            gloalData.BoyOrGirl = settingPanelView.tempBoyOrGirl;
+            gloalData.MusicVolume = settingPanelView.tempMusicVolume;
+            gloalData.SoundVolume = settingPanelView.tempSoundVolume;
         }
     }
 }

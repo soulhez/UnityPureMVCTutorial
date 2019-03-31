@@ -12,41 +12,38 @@ using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
 using Custom.Log;
+
 namespace PureMVC.Tutorial
 {
-    public class HomePanelMediatorExtension : Mediator
+    public class SettingPanelMediator : Mediator
     {
-        public HomePanelMediatorExtension(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
+        public SettingPanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {
         }
 
-
-        public HomePanelView GetHomePanelView
+        public SettingPanelView GetSettingPanelView
         {
             get
             {
-                return ViewComponent as HomePanelView;
+                return ViewComponent as SettingPanelView;
             }
         }
-
         public override void OnRegister()
         {
             base.OnRegister();
-            GetHomePanelView.SettingAction += SettingActionHandle;
+            GetSettingPanelView.CloseButtonAction += CloseButtonActionHandle;
         }
-
 
         public override void OnRemove()
         {
             base.OnRemove();
-            GetHomePanelView.SettingAction = null;
+            GetSettingPanelView.CloseButtonAction = null ;
         }
 
-        public void SettingActionHandle()
+        public void CloseButtonActionHandle()
         {
-            this.Log("加载设置面板");
+            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanelView,"Data");
         }
-
 
         public override string[] ListNotificationInterests()
         {
@@ -72,4 +69,3 @@ namespace PureMVC.Tutorial
         }
     }
 }
-

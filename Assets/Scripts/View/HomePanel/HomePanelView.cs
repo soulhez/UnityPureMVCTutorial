@@ -20,7 +20,6 @@ namespace PureMVC.Tutorial
         public const string homePanelMediatorName = "HomePanelMediator";
 
         public HomePanelMediator homePanelMediator = null;
-        public HomePanelMediatorExtension homePanelMediatorExtension = null;
         #endregion
 
         #region Component
@@ -38,7 +37,8 @@ namespace PureMVC.Tutorial
         void Start()
         {
             InitHomePanel();
-            Register();
+            RegisterComponent();
+            RegisterCommond();
             RegisterMediator();
         }
 
@@ -50,16 +50,26 @@ namespace PureMVC.Tutorial
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        private void Register()
+        private void RegisterComponent()
         {
             playButton.onClick.AddListener(PlayButtonOnClick);
             settingButton.onClick.AddListener(SettingButtonOnClick);
         }
 
-        private void UnRegister()
+        private void UnRegisterComponent()
         {
             playButton.onClick.RemoveAllListeners();
             settingButton.onClick.RemoveAllListeners();
+        }
+
+        private void RegisterCommond()
+        {
+            ApplicationFacade.Instance.RegisterCommand(Notification.OpenSettingCommond, () => new OpenSettingCommond());
+        }
+
+        private void UnRegisterCommond()
+        {
+            ApplicationFacade.Instance.RemoveCommand(Notification.OpenSettingCommond);
         }
 
         private void RegisterMediator()
@@ -75,7 +85,8 @@ namespace PureMVC.Tutorial
 
         public void OnDestroy()
         {
-            UnRegister();
+            UnRegisterComponent();
+            UnRegisterCommond();
             UnRegisterMediator();
         }
         #endregion
