@@ -42,6 +42,13 @@ namespace PureMVC.Tutorial
             RegisterMediator();
         }
 
+        public void OnDestroy()
+        {
+            UnRegisterComponent();
+            UnRegisterCommond();
+            UnRegisterMediator();
+        }
+
         #region 初始化相关
         private void InitHomePanel()
         {
@@ -82,13 +89,6 @@ namespace PureMVC.Tutorial
             ApplicationFacade.Instance.RemoveMediator(homePanelMediatorName);
         }
 
-
-        public void OnDestroy()
-        {
-            UnRegisterComponent();
-            UnRegisterCommond();
-            UnRegisterMediator();
-        }
         #endregion
 
 

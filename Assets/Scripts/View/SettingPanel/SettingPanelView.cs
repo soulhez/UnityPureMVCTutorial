@@ -35,6 +35,8 @@ namespace PureMVC.Tutorial
         private Slider musicSlider = null;
         [SerializeField]
         private Slider soundSlider = null;
+        [SerializeField]
+        private Button closeButton = null;
 
         public Action CloseButtonAction = null;
         #endregion
@@ -46,8 +48,16 @@ namespace PureMVC.Tutorial
         void Start()
         {
             InitSettingPanel();
-            Register();
+            RegisterComponent();
+            RegisterCommond();
             RegisterMediator();
+        }
+
+        public void OnDestroy()
+        {
+            UnRegisterComponent();
+            UnRegisterMediator();
+            UnRegisterCommond();
         }
 
         #region 初始化相关
@@ -58,18 +68,29 @@ namespace PureMVC.Tutorial
             grilToggle = transform.Find("ToggleGroup/GirlToggle").GetComponent<Toggle>();
             musicSlider = transform.Find("MusicImage/musicSlider").GetComponent<Slider>();
             soundSlider = transform.Find("SoundImage/soundSlider").GetComponent<Slider>();
+            closeButton = transform.Find("closeButton").GetComponent<Button>();
         }
 
-        private void Register()
+        private void RegisterComponent()
         {
             boyToggle.onValueChanged.AddListener(BoyToggleOnValueChanged);
             grilToggle.onValueChanged.AddListener(GrilToggleOnValueChanged);
         }
 
-        private void UnRegister()
+        private void UnRegisterComponent()
         {
             boyToggle.onValueChanged.RemoveAllListeners();
             grilToggle.onValueChanged.RemoveAllListeners();
+        }
+
+        private void RegisterCommond()
+        {
+            closeButton.onClick.AddListener(CloseButtonOnClick);
+        }
+
+        private void UnRegisterCommond()
+        {
+            closeButton.onClick.RemoveAllListeners();
         }
 
         private void RegisterMediator()
@@ -82,11 +103,6 @@ namespace PureMVC.Tutorial
             ApplicationFacade.Instance.RemoveMediator(settingPanelViewName);
         }
 
-        public void OnDestroy()
-        {
-            UnRegister();
-            UnRegisterMediator();
-        }
 
         #endregion
 
@@ -102,8 +118,9 @@ namespace PureMVC.Tutorial
 
         public void CloseButtonOnClick()
         {
-            Destroy(gameObject);
+            this.Log("关闭");
             CloseButtonAction?.Invoke();
+            Destroy(gameObject);
         }
 
     }
