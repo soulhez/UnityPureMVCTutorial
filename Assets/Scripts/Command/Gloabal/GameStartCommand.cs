@@ -19,7 +19,7 @@ namespace PureMVC.Tutorial
             GameObject tempObj = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefab/HomePanel"));
             tempObj.name = "HomePanel";
             tempObj.transform.SetParent(canvas.transform, false);
-            tempObj.AddComponent<HomePanelView>();
+            tempObj.AddComponent<HomePanel>();
 
         }
     }

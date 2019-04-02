@@ -15,7 +15,7 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class SettingPanelView : MonoBehaviour
+    public class SettingPanel : Panel
     {
 
         #region Mediator
@@ -47,7 +47,7 @@ namespace PureMVC.Tutorial
 
         void Start()
         {
-            InitSettingPanel();
+            InitPanel();
             RegisterComponent();
             RegisterCommond();
             RegisterMediator();
@@ -62,7 +62,7 @@ namespace PureMVC.Tutorial
 
         #region 初始化相关
 
-        private void InitSettingPanel()
+        protected sealed override void InitPanel()
         {
             boyToggle = transform.Find("ToggleGroup/BoyToggle").GetComponent<Toggle>();
             grilToggle = transform.Find("ToggleGroup/GirlToggle").GetComponent<Toggle>();
@@ -71,34 +71,34 @@ namespace PureMVC.Tutorial
             closeButton = transform.Find("closeButton").GetComponent<Button>();
         }
 
-        private void RegisterComponent()
+        protected sealed override void RegisterComponent()
         {
             boyToggle.onValueChanged.AddListener(BoyToggleOnValueChanged);
             grilToggle.onValueChanged.AddListener(GrilToggleOnValueChanged);
         }
 
-        private void UnRegisterComponent()
+        protected sealed override void UnRegisterComponent()
         {
             boyToggle.onValueChanged.RemoveAllListeners();
             grilToggle.onValueChanged.RemoveAllListeners();
         }
 
-        private void RegisterCommond()
+        protected sealed override void RegisterCommond()
         {
             closeButton.onClick.AddListener(CloseButtonOnClick);
         }
 
-        private void UnRegisterCommond()
+        protected sealed override void UnRegisterCommond()
         {
             closeButton.onClick.RemoveAllListeners();
         }
 
-        private void RegisterMediator()
+        protected sealed override void RegisterMediator()
         {
             ApplicationFacade.Instance.RegisterMediator(new SettingPanelMediator(settingPanelViewName, this));
         }
 
-        private void UnRegisterMediator()
+        protected sealed override void UnRegisterMediator()
         {
             ApplicationFacade.Instance.RemoveMediator(settingPanelViewName);
         }

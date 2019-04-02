@@ -26,7 +26,7 @@ namespace PureMVC.Tutorial
             tempObj.transform.SetParent(canvasObj.transform, false);
             tempObj.name = "SettingPanel";
 
-            tempObj.AddComponent<SettingPanelView>();
+            tempObj.AddComponent<SettingPanel>();
         }
     }
 }

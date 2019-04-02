@@ -20,27 +20,27 @@ namespace PureMVC.Tutorial
         {
         }
 
-        public HomePanelView GetHomePanelView
+        public HomePanel GetHomePanel
         {
             get
             {
-                return ViewComponent as HomePanelView;
+                return ViewComponent as HomePanel;
             }
         }
 
         public override void OnRegister()
         {
             base.OnRegister();
-            GetHomePanelView.PlayAction += PlayActionHandle;
-            GetHomePanelView.SettingAction += SettingActionHandle;
+            GetHomePanel.PlayAction += PlayActionHandle;
+            GetHomePanel.SettingAction += SettingActionHandle;
         }
 
 
         public override void OnRemove()
         {
             base.OnRemove();
-            GetHomePanelView.PlayAction = null;
-            GetHomePanelView.SettingAction = null;
+            GetHomePanel.PlayAction = null;
+            GetHomePanel.SettingAction = null;
         }
 
 
@@ -51,7 +51,7 @@ namespace PureMVC.Tutorial
         public void SettingActionHandle()
         {
             this.Log("加载设置面板");
-            GetHomePanelView.OpenHomePanel();
+            GetHomePanel.OpenHomePanel();
             SendNotification(Notification.OpenSettingCommond, null,"UI");
         }
 

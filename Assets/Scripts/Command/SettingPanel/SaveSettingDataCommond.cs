@@ -20,7 +20,7 @@ namespace PureMVC.Tutorial
         public override void Execute(INotification notification)
         {
             base.Execute(notification);
-            SettingPanelView settingPanelView = notification.Body as SettingPanelView;
+            SettingPanel settingPanelView = notification.Body as SettingPanel;
             GloalDataProxy gloalDataProxy = Facade.RetrieveProxy("GloalDataProxy") as GloalDataProxy;
             GloalData gloalData = gloalDataProxy.GetGloalData;
             gloalData.BoyOrGirl = settingPanelView.tempBoyOrGirl;

@@ -21,28 +21,28 @@ namespace PureMVC.Tutorial
         {
         }
 
-        public SettingPanelView GetSettingPanelView
+        public SettingPanel GetSettingPanel
         {
             get
             {
-                return ViewComponent as SettingPanelView;
+                return ViewComponent as SettingPanel;
             }
         }
         public override void OnRegister()
         {
             base.OnRegister();
-            GetSettingPanelView.CloseButtonAction += CloseButtonActionHandle;
+            GetSettingPanel.CloseButtonAction += CloseButtonActionHandle;
         }
 
         public override void OnRemove()
         {
             base.OnRemove();
-            GetSettingPanelView.CloseButtonAction = null ;
+            GetSettingPanel.CloseButtonAction = null ;
         }
 
         public void CloseButtonActionHandle()
         {
-            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanelView,"Data");
+            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel,"Data");
         }
 
         public override string[] ListNotificationInterests()

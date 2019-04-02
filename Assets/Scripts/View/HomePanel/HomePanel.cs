@@ -14,7 +14,7 @@ using PureMVC.Patterns.Proxy;
 using Custom.Log;
 namespace PureMVC.Tutorial
 {
-    public class HomePanelView : MonoBehaviour
+    public class HomePanel : Panel
     {
         #region Mediator
         public const string homePanelMediatorName = "HomePanelMediator";
@@ -34,57 +34,43 @@ namespace PureMVC.Tutorial
         public Action SettingAction = null;
 
         #endregion
-        void Start()
-        {
-            InitHomePanel();
-            RegisterComponent();
-            RegisterCommond();
-            RegisterMediator();
-        }
-
-        public void OnDestroy()
-        {
-            UnRegisterComponent();
-            UnRegisterCommond();
-            UnRegisterMediator();
-        }
 
         #region 初始化相关
-        private void InitHomePanel()
+        protected sealed override void InitPanel()
         {
             playButton = transform.Find("playButton").GetComponent<Button>();
             settingButton = transform.Find("settingButton").GetComponent<Button>();
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        private void RegisterComponent()
+        protected sealed override void RegisterComponent()
         {
             playButton.onClick.AddListener(PlayButtonOnClick);
             settingButton.onClick.AddListener(SettingButtonOnClick);
         }
 
-        private void UnRegisterComponent()
+        protected sealed override void UnRegisterComponent()
         {
             playButton.onClick.RemoveAllListeners();
             settingButton.onClick.RemoveAllListeners();
         }
 
-        private void RegisterCommond()
+        protected sealed override void RegisterCommond()
         {
             ApplicationFacade.Instance.RegisterCommand(Notification.OpenSettingCommond, () => new OpenSettingCommond());
         }
 
-        private void UnRegisterCommond()
+        protected sealed override void UnRegisterCommond()
         {
             ApplicationFacade.Instance.RemoveCommand(Notification.OpenSettingCommond);
         }
 
-        private void RegisterMediator()
+        protected sealed override void RegisterMediator()
         {
             ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(homePanelMediatorName, this));
         }
 
-        private void UnRegisterMediator()
+        protected sealed override void UnRegisterMediator()
         {
             ApplicationFacade.Instance.RemoveMediator(homePanelMediatorName);
         }
