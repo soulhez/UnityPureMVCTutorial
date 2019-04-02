@@ -31,18 +31,52 @@ namespace PureMVC.Tutorial
         public override void OnRegister()
         {
             base.OnRegister();
-            GetSettingPanel.CloseButtonAction += CloseButtonActionHandle;
+            GetSettingPanel.CloseButtonAction = CloseButtonActionHandle;
+            GetSettingPanel.BoyToggleAction = BoyToggleActionHandle;
+            GetSettingPanel.GrilToggleAction = GrilToggleActionHandle;
+            GetSettingPanel.MusicSliderAction = MusicSliderActionHandle;
+            GetSettingPanel.SoundSliderAction = SoundSliderActionHandle;
         }
 
         public override void OnRemove()
         {
             base.OnRemove();
-            GetSettingPanel.CloseButtonAction = null ;
+            GetSettingPanel.CloseButtonAction = null;
+            GetSettingPanel.BoyToggleAction = null;
+            GetSettingPanel.GrilToggleAction = null;
+            GetSettingPanel.MusicSliderAction = null;
+            GetSettingPanel.SoundSliderAction = null;
         }
 
         public void CloseButtonActionHandle()
         {
-            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel,"Data");
+            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel, "Data");
+        }
+
+        public void BoyToggleActionHandle(bool tempBool)
+        {
+            if (tempBool)
+            {
+                this.Log("选中的是男孩");
+            }
+        }
+
+        public void GrilToggleActionHandle(bool tempBool)
+        {
+            if (tempBool)
+            {
+                this.Log("选中的是女孩");
+            }
+        }
+
+        public void MusicSliderActionHandle(float tempVolume)
+        {
+            this.Log($"调节Music的数值为{tempVolume}");
+        }
+
+        public void SoundSliderActionHandle(float tempVolume)
+        {
+            this.Log($"调节Sound的数值为{tempVolume}");
         }
 
         public override string[] ListNotificationInterests()

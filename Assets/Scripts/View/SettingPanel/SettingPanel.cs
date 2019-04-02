@@ -39,26 +39,17 @@ namespace PureMVC.Tutorial
         private Button closeButton = null;
 
         public Action CloseButtonAction = null;
-        #endregion
+        public Action<bool> BoyToggleAction;
+        public Action<bool> GrilToggleAction;
+        public Action<float> MusicSliderAction;
+        public Action<float> SoundSliderAction;
 
         public int tempBoyOrGirl;
         public float tempMusicVolume;
         public float tempSoundVolume;
+        #endregion
 
-        void Start()
-        {
-            InitPanel();
-            RegisterComponent();
-            RegisterCommond();
-            RegisterMediator();
-        }
 
-        public void OnDestroy()
-        {
-            UnRegisterComponent();
-            UnRegisterMediator();
-            UnRegisterCommond();
-        }
 
         #region 初始化相关
 
@@ -75,6 +66,9 @@ namespace PureMVC.Tutorial
         {
             boyToggle.onValueChanged.AddListener(BoyToggleOnValueChanged);
             grilToggle.onValueChanged.AddListener(GrilToggleOnValueChanged);
+            closeButton.onClick.AddListener(CloseButtonOnClick);
+            musicSlider.onValueChanged.AddListener(MusicSliderOnValueChanged);
+            soundSlider.onValueChanged.AddListener(MusicSliderOnValueChanged);
         }
 
         protected sealed override void UnRegisterComponent()
@@ -85,7 +79,7 @@ namespace PureMVC.Tutorial
 
         protected sealed override void RegisterCommond()
         {
-            closeButton.onClick.AddListener(CloseButtonOnClick);
+
         }
 
         protected sealed override void UnRegisterCommond()
@@ -108,12 +102,21 @@ namespace PureMVC.Tutorial
 
         public void BoyToggleOnValueChanged(bool tempBool)
         {
-
+            BoyToggleAction?.Invoke(tempBool);
         }
 
         public void GrilToggleOnValueChanged(bool tempBool)
         {
+            GrilToggleAction?.Invoke(tempBool);
+        }
 
+        public void MusicSliderOnValueChanged(float tempVolume)
+        {
+            MusicSliderAction?.Invoke(tempVolume);
+        }
+        public void SoundSliderOnValueChanged(float tempVolume)
+        {
+            SoundSliderAction?.Invoke(tempVolume);
         }
 
         public void CloseButtonOnClick()
@@ -122,6 +125,5 @@ namespace PureMVC.Tutorial
             CloseButtonAction?.Invoke();
             Destroy(gameObject);
         }
-
     }
 }
