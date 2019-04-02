@@ -47,19 +47,22 @@ namespace PureMVC.Tutorial
         public void PlayActionHandle()
         {
             this.Log("加载商店面板");
+            SendNotification(Notification.PlayGameCommond,null,null) ;
+            SendNotification(Notification.CloseHomePanel, null, null);
         }
         public void SettingActionHandle()
         {
             this.Log("加载设置面板");
-            GetHomePanel.OpenHomePanel();
             SendNotification(Notification.OpenSettingCommond, null,"UI");
+            SendNotification(Notification.CloseHomePanel, null, null);
         }
 
 
         public override string[] ListNotificationInterests()
         {
             List<string> listNotificationInterests = new List<string>();
-            listNotificationInterests.Add("123123");
+            listNotificationInterests.Add(Notification.CloseHomePanel);
+            listNotificationInterests.Add(Notification.OpenHomePanel);
 
             return listNotificationInterests.ToArray();
         }
@@ -68,9 +71,14 @@ namespace PureMVC.Tutorial
         {
             switch (notification.Name)
             {
-                case "123":
+                case Notification.OpenHomePanel:
                     {
-                        this.Log("123123123");
+                        GetHomePanel.OpenHomePanel();
+                        break;
+                    }
+                case Notification.CloseHomePanel:
+                    {
+                        GetHomePanel.CloseHomePanel();
                         break;
                     }
 

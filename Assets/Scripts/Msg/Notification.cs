@@ -22,5 +22,8 @@ namespace PureMVC.Tutorial
         public const string LoginSuccessProxy = "LoginSuccessProxy";
         public const string OpenSettingCommond = "OpenSettingCommond";
         public const string SaveSettingDataCommond = "SaveSettingDataCommond";
+        public const string OpenHomePanel = "OpenHomePanel";
+        public const string CloseHomePanel = "CloseHomePanel";
+        public const string PlayGameCommond = "PlayGameCommond";
     }
 }

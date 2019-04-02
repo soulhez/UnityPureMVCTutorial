@@ -21,6 +21,11 @@ namespace PureMVC.Tutorial
         {
             base.Execute(notification);
             SettingPanel settingPanelView = notification.Body as SettingPanel;
+            if (settingPanelView == null)
+            {
+                this.LogError("settingPanelView为null，请检查");
+                return;
+            }
             GloalDataProxy gloalDataProxy = Facade.RetrieveProxy("GloalDataProxy") as GloalDataProxy;
             GloalData gloalData = gloalDataProxy.GetGloalData;
             gloalData.BoyOrGirl = settingPanelView.tempBoyOrGirl;

@@ -50,7 +50,8 @@ namespace PureMVC.Tutorial
 
         public void CloseButtonActionHandle()
         {
-            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel, "Data");
+            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel, null);
+            SendNotification(Notification.OpenHomePanel, null, null);
         }
 
         public void BoyToggleActionHandle(bool tempBool)

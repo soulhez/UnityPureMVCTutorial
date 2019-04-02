@@ -58,11 +58,13 @@ namespace PureMVC.Tutorial
         protected sealed override void RegisterCommond()
         {
             ApplicationFacade.Instance.RegisterCommand(Notification.OpenSettingCommond, () => new OpenSettingCommond());
+            ApplicationFacade.Instance.RegisterCommand(Notification.PlayGameCommond, () => new PlayGameCommond());
         }
 
         protected sealed override void UnRegisterCommond()
         {
             ApplicationFacade.Instance.RemoveCommand(Notification.OpenSettingCommond);
+            ApplicationFacade.Instance.RemoveCommand(Notification.PlayGameCommond);
         }
 
         protected sealed override void RegisterMediator()

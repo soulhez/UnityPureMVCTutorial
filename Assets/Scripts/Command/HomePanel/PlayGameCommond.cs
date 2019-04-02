@@ -15,18 +15,23 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class PlayGameCommond : MonoBehaviour
+    public class PlayGameCommond : SimpleCommand
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void Execute(INotification notification)
         {
-        
-        }
+            base.Execute(notification);
 
-        // Update is called once per frame
-        void Update()
-        {
-        
+            GameObject canvasObj = GameObject.Find("Canvas");
+
+            GameObject tempObj0 = ResourcesManager.GetInstance.LoadPrefab("StorePanel");
+            tempObj0.transform.SetParent(canvasObj.transform, false);
+            tempObj0.name = "StorePanel";
+
+            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("CurrencyPanel");
+            tempObj.transform.SetParent(canvasObj.transform, false);
+            tempObj.name = "CurrencyPanel";
+
+
         }
     }
 }
