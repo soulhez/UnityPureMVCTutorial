@@ -75,16 +75,19 @@ namespace PureMVC.Tutorial
         {
             boyToggle.onValueChanged.RemoveAllListeners();
             grilToggle.onValueChanged.RemoveAllListeners();
+            closeButton.onClick.RemoveAllListeners();
+            musicSlider.onValueChanged.RemoveAllListeners();
+            soundSlider.onValueChanged.RemoveAllListeners();
         }
 
         protected sealed override void RegisterCommond()
         {
-
+            ApplicationFacade.Instance.RegisterCommand(Notification.SaveSettingDataCommond, () => new SaveSettingDataCommond());
         }
 
         protected sealed override void UnRegisterCommond()
         {
-            closeButton.onClick.RemoveAllListeners();
+            ApplicationFacade.Instance.RemoveCommand(Notification.SaveSettingDataCommond);
         }
 
         protected sealed override void RegisterMediator()

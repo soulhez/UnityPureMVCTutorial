@@ -35,7 +35,7 @@ namespace PureMVC.Tutorial
         protected override void InitializeModel()
         {
             base.InitializeModel();
-            RegisterProxy(new GloalDataProxy("GloalDataProxy"));
+            RegisterProxy(new GloalDataProxy("GloalDataProxy",new GloalData()));
         }
 
         public void StartUpHandle()
