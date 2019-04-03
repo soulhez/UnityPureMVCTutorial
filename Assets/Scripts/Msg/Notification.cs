@@ -32,9 +32,12 @@ namespace PureMVC.Tutorial
         public const string PlayGameCommond = "PlayGameCommond";
 
         //*********************【CurrencyPanel】*********************
-        public const string ChangeGold = "ChangeGold";
-        public const string ChangeSilver = "ChangeSilver";
-        public const string ChangeBronze = "ChangeBronze";
+        public const string ChangeGlodCup = "ChangeGlodCup";
+        public const string ChangeSilverCup = "ChangeSilverCup";
+        public const string ChangeBronzeCup = "ChangeBronzeCup";
+
+        //*********************【VirtualNetServer】*********************
+        public const string GetGlobalData = "GetGlobalData";
 
     }
 }

@@ -26,8 +26,8 @@ namespace PureMVC.Tutorial
                 this.LogError("settingPanelView为null，请检查");
                 return;
             }
-            GloalDataProxy gloalDataProxy = Facade.RetrieveProxy("GloalDataProxy") as GloalDataProxy;
-            GloalData gloalData = gloalDataProxy.GetGloalData;
+            GlobalDataProxy gloalDataProxy = Facade.RetrieveProxy("GloalDataProxy") as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
             gloalData.BoyOrGirl = settingPanelView.tempBoyOrGirl;
             gloalData.MusicVolume = settingPanelView.tempMusicVolume;
             gloalData.SoundVolume = settingPanelView.tempSoundVolume;

@@ -30,7 +30,7 @@ namespace PureMVC.Tutorial
             GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("CurrencyPanel");
             tempObj.transform.SetParent(canvasObj.transform, false);
             tempObj.name = "CurrencyPanel";
-
+            tempObj.AddComponent<CurrencyPanel>();
 
         }
     }

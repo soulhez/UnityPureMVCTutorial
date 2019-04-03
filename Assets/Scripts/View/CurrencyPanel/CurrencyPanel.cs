@@ -15,13 +15,17 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
+
     public class CurrencyPanel : Panel
     {
         public const string currencyPanelMediatorName = "currencyPanelMediator";
 
         #region Component
+        [SerializeField]
         private Text goldText = null;
+        [SerializeField]
         private Text silverText = null;
+        [SerializeField]
         private Text bronzeText = null;
         #endregion
 
@@ -57,6 +61,36 @@ namespace PureMVC.Tutorial
         protected override void UnRegisterMediator()
         {
             ApplicationFacade.Instance.RemoveMediator(currencyPanelMediatorName);
+        }
+       public enum CurrencyType
+        {
+            Gold,
+            Silver,
+            Bronze
+        }
+        public void ChangeCup(CurrencyType tempType,int number)
+        {
+            switch (tempType)
+            {
+                case CurrencyType.Gold:
+                    {
+                        goldText.text = number.ToString();
+                    }
+                    break;
+                case CurrencyType.Silver:
+                    {
+                        silverText.text = number.ToString();
+                    }
+                    break;
+                case CurrencyType.Bronze:
+                    {
+                        bronzeText.text = number.ToString();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }

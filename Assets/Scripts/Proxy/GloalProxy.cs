@@ -15,17 +15,17 @@ using Custom.Log;
 
  namespace PureMVC.Tutorial
 {
-    public class GloalDataProxy : Proxy
+    public class GlobalDataProxy : Proxy
     {
-        public GloalDataProxy(string proxyName, object data = null) : base(proxyName, data)
+        public GlobalDataProxy(string proxyName, object data = null) : base(proxyName, data)
         {
         }
 
-        public GloalData GetGloalData
+        public GlobalData GetGlobalData
         {
             get
             {
-                return Data as GloalData;
+                return Data as GlobalData;
             }
         }
 
@@ -40,7 +40,7 @@ using Custom.Log;
         }
     }
 
-    public class GloalData
+    public class GlobalData
     {
         public int BoyOrGirl { get; set; }
         public float MusicVolume { get; set; }
@@ -48,7 +48,7 @@ using Custom.Log;
         public int ThemeIndex { get; set; }
         public int ItemCount { get; set; }
 
-        public int GoldCupC { get; set; }
+        public int GoldCup { get; set; }
         public int SilverCup { get; set; }
         public int BronzeCup { get; set; }
     }

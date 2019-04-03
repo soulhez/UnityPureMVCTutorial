@@ -34,30 +34,35 @@ namespace PureMVC.Tutorial
         public override string[] ListNotificationInterests()
         {
             List<string> listNotificationInterests = new List<string>();
-            listNotificationInterests.Add(Notification.ChangeGold);
-            listNotificationInterests.Add(Notification.ChangeSilver);
-            listNotificationInterests.Add(Notification.ChangeBronze);
+            listNotificationInterests.Add(Notification.ChangeGlodCup);
+            listNotificationInterests.Add(Notification.ChangeSilverCup);
+            listNotificationInterests.Add(Notification.ChangeBronzeCup);
 
             return listNotificationInterests.ToArray();
         }
 
         public override void HandleNotification(INotification notification)
         {
+            int tempNumber = -1;
+            if (notification.Body is int)
+            {
+                tempNumber =(int) notification.Body;
+            }
             switch (notification.Name)
             {
-                case Notification.ChangeGold:
+                case Notification.ChangeGlodCup:
                     {
-                        this.Log("123123123");
+                        GetCurrencyPanel.ChangeCup(CurrencyPanel.CurrencyType.Gold, tempNumber);
                         break;
                     }
-                case Notification.ChangeSilver:
+                case Notification.ChangeSilverCup:
                     {
-                        this.Log("123123123");
+                        GetCurrencyPanel.ChangeCup(CurrencyPanel.CurrencyType.Silver, tempNumber);
                         break;
                     }
-                case Notification.ChangeBronze:
+                case Notification.ChangeBronzeCup:
                     {
-                        this.Log("123123123");
+                        GetCurrencyPanel.ChangeCup(CurrencyPanel.CurrencyType.Bronze, tempNumber);
                         break;
                     }
 
