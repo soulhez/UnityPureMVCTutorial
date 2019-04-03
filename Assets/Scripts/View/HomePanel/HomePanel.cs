@@ -16,11 +16,7 @@ namespace PureMVC.Tutorial
 {
     public class HomePanel : Panel
     {
-        #region Mediator
         public const string homePanelMediatorName = "HomePanelMediator";
-
-        public HomePanelMediator homePanelMediator = null;
-        #endregion
 
         #region Component
         [SerializeField]

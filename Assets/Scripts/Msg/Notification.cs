@@ -16,14 +16,25 @@ namespace PureMVC.Tutorial
 {
     public static class Notification
     {
+        //*********************【Framework】*********************
         public const string StartUp = "StartUp";
         public const string GameStart = "GameStart";
         public const string LoginSuccess = "LoginSuccess";
         public const string LoginSuccessProxy = "LoginSuccessProxy";
+
+        //*********************【SettingPanel】*********************
         public const string OpenSettingCommond = "OpenSettingCommond";
         public const string SaveSettingDataCommond = "SaveSettingDataCommond";
+
+        //*********************【HomePanel】*********************
         public const string OpenHomePanel = "OpenHomePanel";
         public const string CloseHomePanel = "CloseHomePanel";
         public const string PlayGameCommond = "PlayGameCommond";
+
+        //*********************【CurrencyPanel】*********************
+        public const string ChangeGold = "ChangeGold";
+        public const string ChangeSilver = "ChangeSilver";
+        public const string ChangeBronze = "ChangeBronze";
+
     }
 }
