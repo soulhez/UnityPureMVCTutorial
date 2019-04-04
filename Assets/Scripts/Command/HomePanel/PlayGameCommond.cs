@@ -23,14 +23,16 @@ namespace PureMVC.Tutorial
 
             GameObject canvasObj = GameObject.Find("Canvas");
 
-            GameObject tempObj0 = ResourcesManager.GetInstance.LoadPrefab("StorePanel");
-            tempObj0.transform.SetParent(canvasObj.transform, false);
-            tempObj0.name = "StorePanel";
+            GameObject tempStorePanel = ResourcesManager.GetInstance.LoadPrefab("StorePanel");
+            tempStorePanel.transform.SetParent(canvasObj.transform, false);
+            tempStorePanel.name = "StorePanel";
+            tempStorePanel.AddComponent<StorePanel>();
 
-            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("CurrencyPanel");
-            tempObj.transform.SetParent(canvasObj.transform, false);
-            tempObj.name = "CurrencyPanel";
-            tempObj.AddComponent<CurrencyPanel>();
+
+            GameObject tempCurrencyPanel = ResourcesManager.GetInstance.LoadPrefab("CurrencyPanel");
+            tempCurrencyPanel.transform.SetParent(canvasObj.transform, false);
+            tempCurrencyPanel.name = "CurrencyPanel";
+            tempCurrencyPanel.AddComponent<CurrencyPanel>();
 
         }
     }

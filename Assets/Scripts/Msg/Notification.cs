@@ -39,5 +39,9 @@ namespace PureMVC.Tutorial
         //*********************【VirtualNetServer】*********************
         public const string GetGlobalData = "GetGlobalData";
 
+        //*********************【StorePanel】*********************
+        public const string ColdTheme = "ColdTheme";
+        public const string WarmTheme = "ColdTheme";
+
     }
 }

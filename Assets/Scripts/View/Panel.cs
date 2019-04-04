@@ -32,9 +32,9 @@ namespace PureMVC.Tutorial
 
         public virtual void OnDestroy()
         {
-            UnRegisterComponent();
-            UnRegisterCommond();
             UnRegisterMediator();
+            UnRegisterCommond();
+            UnRegisterComponent();
         }
         protected abstract void UnRegisterComponent();
         protected abstract void UnRegisterCommond();
