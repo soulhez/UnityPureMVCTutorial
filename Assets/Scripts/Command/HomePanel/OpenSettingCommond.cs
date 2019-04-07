@@ -24,8 +24,6 @@ namespace PureMVC.Tutorial
             GameObject canvasObj = GameObject.Find("Canvas");
             GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
             tempObj.transform.SetParent(canvasObj.transform, false);
-            tempObj.name = "SettingPanel";
-
             tempObj.AddComponent<SettingPanel>();
         }
     }

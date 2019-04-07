@@ -17,6 +17,7 @@ namespace PureMVC.Tutorial
 {
     public class StorePanelMediator : Mediator
     {
+        public new static string NAME = "StorePanelMediator";
         public StorePanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {
         }
@@ -34,6 +35,24 @@ namespace PureMVC.Tutorial
             base.OnRegister();
             GetStorePanel.coldThemeToggleAction = ColdThemeToggleActionHandle;
             GetStorePanel.warmThemeToggleAction = WarmThemeToggleActionHandle;
+
+            CreatItem();
+        }
+
+        public void CreatItem()
+        {
+            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
+            int count = gloalData.ItemCount;
+            for (int i = 0; i < count; i++)
+            {
+               GameObject tempObj =  UnityEngine.GameObject.Instantiate(GetStorePanel.templateItem);
+                ItemComponent itemComponent = tempObj.AddComponent<ItemComponent>();
+                itemComponent.SetData(gloalData);
+                tempObj.name = "Item_" + i;
+                tempObj.transform.SetParent(GetStorePanel.target, false);
+                tempObj.SetActive(true);
+            }
         }
 
         public override void OnRemove()

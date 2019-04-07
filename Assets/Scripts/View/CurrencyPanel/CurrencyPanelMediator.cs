@@ -17,6 +17,7 @@ namespace PureMVC.Tutorial
 {
     public class CurrencyPanelMediator : Mediator
     {
+        public new static string NAME = "CurrencyPanelMediator";
         public CurrencyPanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {
         }

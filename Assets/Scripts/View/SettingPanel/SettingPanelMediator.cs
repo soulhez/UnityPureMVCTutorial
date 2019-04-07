@@ -17,6 +17,8 @@ namespace PureMVC.Tutorial
 {
     public class SettingPanelMediator : Mediator
     {
+        public new static string NAME = "SettingPanelMediator";
+
         public SettingPanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {
         }
@@ -59,6 +61,7 @@ namespace PureMVC.Tutorial
             if (tempBool)
             {
                 this.Log("选中的是男孩");
+                GetSettingPanel.tempBoyOrGirl = 1;
             }
         }
 
@@ -67,17 +70,36 @@ namespace PureMVC.Tutorial
             if (tempBool)
             {
                 this.Log("选中的是女孩");
+                GetSettingPanel.tempBoyOrGirl = 0;
             }
         }
 
         public void MusicSliderActionHandle(float tempVolume)
         {
             this.Log($"调节Music的数值为{tempVolume}");
+            GetSettingPanel.tempMusicVolume = tempVolume;
+            if (tempVolume <= 0)
+            {
+                GetSettingPanel.OpenMusicMuteBg();
+            }
+            else
+            {
+                GetSettingPanel.CloseMusicMuteBg();
+            }
         }
 
         public void SoundSliderActionHandle(float tempVolume)
         {
             this.Log($"调节Sound的数值为{tempVolume}");
+            GetSettingPanel.tempSoundVolume = tempVolume;
+            if (tempVolume <= 0)
+            {
+                GetSettingPanel.OpenSoundMuteBg();
+            }
+            else
+            {
+                GetSettingPanel.CloseSoundMuteBg();
+            }
         }
 
         public override string[] ListNotificationInterests()

@@ -30,6 +30,10 @@ namespace PureMVC.Tutorial
         private Slider soundSlider = null;
         [SerializeField]
         private Button closeButton = null;
+        [SerializeField]
+        private GameObject soundBg = null;
+        [SerializeField]
+        private GameObject musicBg = null;
 
         public Action CloseButtonAction = null;
         public Action<bool> BoyToggleAction;
@@ -42,10 +46,7 @@ namespace PureMVC.Tutorial
         public float tempSoundVolume;
         #endregion
 
-
-
         #region 初始化相关
-
         protected sealed override void InitPanel()
         {
             boyToggle = transform.Find("ToggleGroup/BoyToggle").GetComponent<Toggle>();
@@ -53,6 +54,46 @@ namespace PureMVC.Tutorial
             musicSlider = transform.Find("MusicImage/musicSlider").GetComponent<Slider>();
             soundSlider = transform.Find("SoundImage/soundSlider").GetComponent<Slider>();
             closeButton = transform.Find("closeButton").GetComponent<Button>();
+            musicBg = transform.Find("MusicImage/BGImage").gameObject;
+            soundBg = transform.Find("SoundImage/BGImage").gameObject;
+
+            InitDataAndSetComponentState();
+        }
+
+        public void InitDataAndSetComponentState()
+        {
+            GlobalDataProxy globalDataProxy = (GlobalDataProxy) ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME);
+            GlobalData GlobalData = globalDataProxy.GetGlobalData;
+            int tempBoyOrGirl = GlobalData.BoyOrGirl;
+            if (tempBoyOrGirl == 0)
+            {
+                grilToggle.isOn = true;
+            }
+            else
+            {
+                boyToggle.isOn = true;
+            }
+            tempMusicVolume =(float) GlobalData.MusicVolume;
+            musicSlider.value = tempMusicVolume;
+            if (tempMusicVolume <= 0)
+            {
+                OpenMusicMuteBg();
+            }
+            else
+            {
+                CloseMusicMuteBg();
+            }
+
+            tempSoundVolume = (float)GlobalData.SoundVolume;
+            soundSlider.value = tempSoundVolume;
+            if (tempSoundVolume <= 0)
+            {
+                OpenSoundMuteBg();
+            }
+            else
+            {
+                CloseSoundMuteBg();
+            }
         }
 
         protected sealed override void RegisterComponent()
@@ -61,7 +102,7 @@ namespace PureMVC.Tutorial
             grilToggle.onValueChanged.AddListener(GrilToggleOnValueChanged);
             closeButton.onClick.AddListener(CloseButtonOnClick);
             musicSlider.onValueChanged.AddListener(MusicSliderOnValueChanged);
-            soundSlider.onValueChanged.AddListener(MusicSliderOnValueChanged);
+            soundSlider.onValueChanged.AddListener(SoundSliderOnValueChanged);
         }
 
         protected sealed override void UnRegisterComponent()
@@ -92,20 +133,16 @@ namespace PureMVC.Tutorial
         {
             ApplicationFacade.Instance.RemoveMediator(settingPanelMediatorName);
         }
-
-
         #endregion
 
         public void BoyToggleOnValueChanged(bool tempBool)
         {
             BoyToggleAction?.Invoke(tempBool);
         }
-
         public void GrilToggleOnValueChanged(bool tempBool)
         {
             GrilToggleAction?.Invoke(tempBool);
         }
-
         public void MusicSliderOnValueChanged(float tempVolume)
         {
             MusicSliderAction?.Invoke(tempVolume);
@@ -114,12 +151,32 @@ namespace PureMVC.Tutorial
         {
             SoundSliderAction?.Invoke(tempVolume);
         }
-
         public void CloseButtonOnClick()
         {
-            this.Log("关闭");
             CloseButtonAction?.Invoke();
             Destroy(gameObject);
+        }
+        public void OpenSoundMuteBg()
+        {
+            if (!soundBg.activeInHierarchy)
+            {
+                soundBg.SetActive(true);
+            }
+        }
+        public void CloseSoundMuteBg()
+        {
+            soundBg.SetActive(false);
+        }
+        public void OpenMusicMuteBg()
+        {
+            if (!musicBg.activeInHierarchy)
+            {
+                musicBg.SetActive(true);
+            }
+        }
+        public void CloseMusicMuteBg()
+        {
+            musicBg.SetActive(false);
         }
     }
 }

@@ -25,7 +25,6 @@ namespace PureMVC.Tutorial
         protected override void InitializeController()
         {
             base.InitializeController();
-
             RegisterCommand(Notification.StartUp, () => new StartupCommand());
             RegisterCommand(Notification.GameStart, () => new GameStartCommand());
             RegisterCommand(Notification.LoginSuccess, () => new LoginSuccessCommand());
@@ -35,7 +34,7 @@ namespace PureMVC.Tutorial
         protected override void InitializeModel()
         {
             base.InitializeModel();
-            RegisterProxy(new GlobalDataProxy("GloalDataProxy",new GlobalData()));
+            RegisterProxy(new GlobalDataProxy(GlobalDataProxy.NAME,new GlobalData()));
         }
 
         public void StartUpHandle()

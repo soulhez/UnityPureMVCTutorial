@@ -12,11 +12,15 @@ using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
 using Custom.Log;
+using LitJson;
+using System.IO;
 
- namespace PureMVC.Tutorial
+namespace PureMVC.Tutorial
 {
     public class GlobalDataProxy : Proxy
     {
+        public new static string NAME = "GlobalDataProxy";
+
         public GlobalDataProxy(string proxyName, object data = null) : base(proxyName, data)
         {
         }
@@ -32,19 +36,47 @@ using Custom.Log;
         public override void OnRegister()
         {
             base.OnRegister();
+            DeserializeData();
         }
 
         public override void OnRemove()
         {
             base.OnRemove();
+            SerializeData();
+        }
+
+        public void SerializeData()
+        {
+            string jsonStr = JsonMapper.ToJson(GetGlobalData);
+
+            this.Log(jsonStr);
+            if (!Directory.Exists(Application.streamingAssetsPath))
+            {
+                Directory.CreateDirectory(Application.streamingAssetsPath);
+            }
+            File.WriteAllText(Application.streamingAssetsPath + "/" + "GlobalData.json", jsonStr);
+        }
+
+        public void DeserializeData()
+        {
+            if (!Directory.Exists(Application.streamingAssetsPath))
+            {
+                Directory.CreateDirectory(Application.streamingAssetsPath);
+            }
+            string jsonStr = File.ReadAllText(Application.streamingAssetsPath + "/" + "GlobalData.json");
+
+            this.Log(jsonStr);
+
+            Data = JsonMapper.ToObject<GlobalData>(jsonStr);
         }
     }
 
+    [Serializable]
     public class GlobalData
     {
         public int BoyOrGirl { get; set; }
-        public float MusicVolume { get; set; }
-        public float SoundVolume { get; set; }
+        public double MusicVolume { get; set; }
+        public double SoundVolume { get; set; }
         public int ThemeIndex { get; set; }
         public int ItemCount { get; set; }
 

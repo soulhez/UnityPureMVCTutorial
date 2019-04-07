@@ -20,7 +20,7 @@ namespace PureMVC.Tutorial
         public const string storePanelMediatorName = "storePanelMediatorName";
 
         [SerializeField]
-        private GameObject templateItem = null;
+        public GameObject templateItem = null;
         [SerializeField]
         private Toggle coldThemeToggle = null;
         [SerializeField]
@@ -29,6 +29,8 @@ namespace PureMVC.Tutorial
         private GameObject boy = null;
         [SerializeField]
         private GameObject girl = null;
+        [SerializeField]
+        public Transform target = null;
 
         public Action<bool> coldThemeToggleAction = null;
         public Action<bool> warmThemeToggleAction = null;
@@ -40,7 +42,7 @@ namespace PureMVC.Tutorial
             warmThemeToggle = transform.Find("ToggleGroup/warmThemeToggle").GetComponent<Toggle>();
             boy = transform.Find("people/boyImage").gameObject;
             girl = transform.Find("people/girlImage").gameObject;
-
+            target = transform.Find("ItemScrollView/Viewport/Content");
             templateItem.SetActive(false);
         }
 
@@ -84,6 +86,15 @@ namespace PureMVC.Tutorial
         public void WarmThemeOnValueChanged(bool tempIs)
         {
             warmThemeToggleAction?.Invoke(tempIs);
+        }
+
+        public void OpenBoyObj()
+        {
+
+        }
+        public void OpenGrilObj()
+        {
+
         }
     }
 

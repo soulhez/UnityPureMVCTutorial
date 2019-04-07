@@ -28,7 +28,6 @@ namespace PureMVC.Tutorial
 
         public Action PlayAction = null;
         public Action SettingAction = null;
-
         #endregion
 
         #region 初始化相关
@@ -74,7 +73,6 @@ namespace PureMVC.Tutorial
         }
 
         #endregion
-
 
         public void PlayButtonOnClick()
         {
