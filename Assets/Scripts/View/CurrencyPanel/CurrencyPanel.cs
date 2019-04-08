@@ -15,7 +15,12 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-
+    public enum CurrencyType
+    {
+        Gold=1,
+        Silver=2,
+        Bronze=3
+    }
     public class CurrencyPanel : Panel
     {
         public const string currencyPanelMediatorName = "currencyPanelMediator";
@@ -34,6 +39,16 @@ namespace PureMVC.Tutorial
             goldText = transform.Find("GoldCupBG/numberText").GetComponent<Text>();
             silverText = transform.Find("SilverCupBG/numberText").GetComponent<Text>();
             bronzeText = transform.Find("BronzeCupBG/numberText").GetComponent<Text>();
+            InitData();
+        }
+
+        public void InitData()
+        {
+            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
+            goldText.text = gloalData.GoldCup.ToString();
+            silverText.text = gloalData.SilverCup.ToString();
+            bronzeText.text = gloalData.BronzeCup.ToString();
         }
 
 
@@ -61,12 +76,6 @@ namespace PureMVC.Tutorial
         protected override void UnRegisterMediator()
         {
             ApplicationFacade.Instance.RemoveMediator(currencyPanelMediatorName);
-        }
-       public enum CurrencyType
-        {
-            Gold,
-            Silver,
-            Bronze
         }
         public void ChangeCup(CurrencyType tempType,int number)
         {

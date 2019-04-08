@@ -40,7 +40,9 @@ namespace PureMVC.Tutorial
         public Action<bool> GrilToggleAction;
         public Action<float> MusicSliderAction;
         public Action<float> SoundSliderAction;
+        #endregion
 
+        #region Data
         public int tempBoyOrGirl;
         public float tempMusicVolume;
         public float tempSoundVolume;

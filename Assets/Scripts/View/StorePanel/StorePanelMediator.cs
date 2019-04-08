@@ -43,12 +43,22 @@ namespace PureMVC.Tutorial
         {
             GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
             GlobalData gloalData = gloalDataProxy.GetGlobalData;
+            if (gloalData.BoyOrGirl == 0)
+            {
+                GetStorePanel.girl.SetActive(true);
+                GetStorePanel.boy.SetActive(false);
+            }
+            else
+            {
+                GetStorePanel.girl.SetActive(false);
+                GetStorePanel.boy.SetActive(true);
+            }
             int count = gloalData.ItemCount;
             for (int i = 0; i < count; i++)
             {
                GameObject tempObj =  UnityEngine.GameObject.Instantiate(GetStorePanel.templateItem);
                 ItemComponent itemComponent = tempObj.AddComponent<ItemComponent>();
-                itemComponent.SetData(gloalData);
+                GetStorePanel.itemComponents.Add(itemComponent);
                 tempObj.name = "Item_" + i;
                 tempObj.transform.SetParent(GetStorePanel.target, false);
                 tempObj.SetActive(true);
@@ -84,8 +94,8 @@ namespace PureMVC.Tutorial
         public override string[] ListNotificationInterests()
         {
             List<string> listNotificationInterests = new List<string>();
-            listNotificationInterests.Add("123123");
-
+            listNotificationInterests.Add(Notification.ColdTheme);
+            listNotificationInterests.Add(Notification.WarmTheme);
             return listNotificationInterests.ToArray();
         }
 
@@ -93,9 +103,26 @@ namespace PureMVC.Tutorial
         {
             switch (notification.Name)
             {
-                case "123":
+                case Notification.ColdTheme:
                     {
-                        this.Log("123123123");
+                        GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+                        GlobalData gloalData = gloalDataProxy.GetGlobalData;
+                        gloalData.ThemeIndex = 1;
+                        for (int i = 0; i < GetStorePanel.itemComponents.Count; i++)
+                        {
+                            GetStorePanel.itemComponents[i].ChangeTheme();
+                        }
+                        break;
+                    }
+                    case Notification.WarmTheme:
+                    {
+                        GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+                        GlobalData gloalData = gloalDataProxy.GetGlobalData;
+                        gloalData.ThemeIndex = 2;
+                        for (int i = 0; i < GetStorePanel.itemComponents.Count; i++)
+                        {
+                            GetStorePanel.itemComponents[i].ChangeTheme();
+                        }
                         break;
                     }
 

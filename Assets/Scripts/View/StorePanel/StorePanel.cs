@@ -19,6 +19,7 @@ namespace PureMVC.Tutorial
     {
         public const string storePanelMediatorName = "storePanelMediatorName";
 
+        #region
         [SerializeField]
         public GameObject templateItem = null;
         [SerializeField]
@@ -26,14 +27,20 @@ namespace PureMVC.Tutorial
         [SerializeField]
         private Toggle warmThemeToggle = null;
         [SerializeField]
-        private GameObject boy = null;
+        public GameObject boy = null;
         [SerializeField]
-        private GameObject girl = null;
+        public GameObject girl = null;
         [SerializeField]
         public Transform target = null;
 
         public Action<bool> coldThemeToggleAction = null;
         public Action<bool> warmThemeToggleAction = null;
+        #endregion
+
+
+        #region
+        public List<ItemComponent> itemComponents = new List<ItemComponent>();
+        #endregion
 
         protected override void InitPanel()
         {
@@ -44,6 +51,22 @@ namespace PureMVC.Tutorial
             girl = transform.Find("people/girlImage").gameObject;
             target = transform.Find("ItemScrollView/Viewport/Content");
             templateItem.SetActive(false);
+
+            InitData();
+        }
+
+        public void InitData()
+        {
+            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
+            if (gloalData.ThemeIndex == 1)
+            {
+                coldThemeToggle.isOn = true;
+            }
+            else
+            {
+                warmThemeToggle.isOn = true;
+            }
         }
 
         protected override void RegisterComponent()
@@ -54,7 +77,8 @@ namespace PureMVC.Tutorial
 
         protected override void UnRegisterComponent()
         {
-
+            coldThemeToggle.onValueChanged.RemoveAllListeners();
+            warmThemeToggle.onValueChanged.RemoveAllListeners();
         }
 
         protected override void RegisterCommond()
@@ -75,10 +99,6 @@ namespace PureMVC.Tutorial
             ApplicationFacade.Instance.RemoveMediator(storePanelMediatorName);
         }
 
-
-
-
-
         public void ColdThemeOnValueChanged(bool tempIs)
         {
             coldThemeToggleAction?.Invoke(tempIs);
@@ -88,14 +108,6 @@ namespace PureMVC.Tutorial
             warmThemeToggleAction?.Invoke(tempIs);
         }
 
-        public void OpenBoyObj()
-        {
-
-        }
-        public void OpenGrilObj()
-        {
-
-        }
     }
 
 }

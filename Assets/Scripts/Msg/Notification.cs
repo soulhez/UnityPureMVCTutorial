@@ -41,7 +41,7 @@ namespace PureMVC.Tutorial
 
         //*********************【StorePanel】*********************
         public const string ColdTheme = "ColdTheme";
-        public const string WarmTheme = "ColdTheme";
+        public const string WarmTheme = "WarmTheme";
 
     }
 }

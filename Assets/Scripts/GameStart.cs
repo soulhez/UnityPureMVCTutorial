@@ -23,12 +23,14 @@ namespace PureMVC.Tutorial
         }
         void Start()
         {
+            UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
             applicationFacade.StartUpHandle();
         }
 
         private void OnDestroy()
         {
             applicationFacade.RemoveProxy(GlobalDataProxy.NAME);
+            this.Log("存储");
         }
 
         private void OnDisable()
@@ -50,8 +52,5 @@ namespace PureMVC.Tutorial
                 this.Log("按键1");
             }
         }
-
-
-
     }
 }
