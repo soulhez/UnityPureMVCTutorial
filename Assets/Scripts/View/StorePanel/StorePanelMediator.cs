@@ -35,7 +35,7 @@ namespace PureMVC.Tutorial
             base.OnRegister();
             GetStorePanel.coldThemeToggleAction = ColdThemeToggleActionHandle;
             GetStorePanel.warmThemeToggleAction = WarmThemeToggleActionHandle;
-
+            GetStorePanel.CloseButtonAction = CloseOnClickActionHandle;
             CreatItem();
         }
 
@@ -90,6 +90,10 @@ namespace PureMVC.Tutorial
             }
         }
 
+        public void CloseOnClickActionHandle()
+        {
+            SendNotification(Notification.OpenHomePanel, null, null);
+        }
 
         public override string[] ListNotificationInterests()
         {

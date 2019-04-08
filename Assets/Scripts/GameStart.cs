@@ -30,7 +30,6 @@ namespace PureMVC.Tutorial
         private void OnDestroy()
         {
             applicationFacade.RemoveProxy(GlobalDataProxy.NAME);
-            this.Log("存储");
         }
 
         private void OnDisable()

@@ -19,7 +19,7 @@ namespace PureMVC.Tutorial
     {
         public const string storePanelMediatorName = "storePanelMediatorName";
 
-        #region
+        #region Component
         [SerializeField]
         public GameObject templateItem = null;
         [SerializeField]
@@ -32,13 +32,16 @@ namespace PureMVC.Tutorial
         public GameObject girl = null;
         [SerializeField]
         public Transform target = null;
+        [SerializeField]
+        private Button closeButton = null;
 
         public Action<bool> coldThemeToggleAction = null;
         public Action<bool> warmThemeToggleAction = null;
+        public Action CloseButtonAction = null;
         #endregion
 
 
-        #region
+        #region Data
         public List<ItemComponent> itemComponents = new List<ItemComponent>();
         #endregion
 
@@ -50,6 +53,7 @@ namespace PureMVC.Tutorial
             boy = transform.Find("people/boyImage").gameObject;
             girl = transform.Find("people/girlImage").gameObject;
             target = transform.Find("ItemScrollView/Viewport/Content");
+            closeButton = transform.Find("closeButton").GetComponent<Button>();
             templateItem.SetActive(false);
 
             InitData();
@@ -73,12 +77,14 @@ namespace PureMVC.Tutorial
         {
             coldThemeToggle.onValueChanged.AddListener(ColdThemeOnValueChanged);
             warmThemeToggle.onValueChanged.AddListener(WarmThemeOnValueChanged);
+            closeButton.onClick.AddListener(CloseOnClick);
         }
 
         protected override void UnRegisterComponent()
         {
             coldThemeToggle.onValueChanged.RemoveAllListeners();
             warmThemeToggle.onValueChanged.RemoveAllListeners();
+            closeButton.onClick.RemoveAllListeners();
         }
 
         protected override void RegisterCommond()
@@ -106,6 +112,12 @@ namespace PureMVC.Tutorial
         public void WarmThemeOnValueChanged(bool tempIs)
         {
             warmThemeToggleAction?.Invoke(tempIs);
+        }
+
+        public void CloseOnClick()
+        {
+            Destroy(gameObject);
+            CloseButtonAction?.Invoke();
         }
 
     }
