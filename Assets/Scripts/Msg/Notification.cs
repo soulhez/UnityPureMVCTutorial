@@ -35,6 +35,7 @@ namespace PureMVC.Tutorial
         public const string ChangeGlodCup = "ChangeGlodCup";
         public const string ChangeSilverCup = "ChangeSilverCup";
         public const string ChangeBronzeCup = "ChangeBronzeCup";
+        public const string CloseCurrencyPanel = "CloseCurrencyPanel";
 
         //*********************【VirtualNetServer】*********************
         public const string GetGlobalData = "GetGlobalData";

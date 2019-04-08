@@ -60,7 +60,6 @@ namespace PureMVC.Tutorial
         {
             if (tempBool)
             {
-                this.Log("选中的是男孩");
                 GetSettingPanel.tempBoyOrGirl = 1;
             }
         }
@@ -69,14 +68,12 @@ namespace PureMVC.Tutorial
         {
             if (tempBool)
             {
-                this.Log("选中的是女孩");
                 GetSettingPanel.tempBoyOrGirl = 0;
             }
         }
 
         public void MusicSliderActionHandle(float tempVolume)
         {
-            this.Log($"调节Music的数值为{tempVolume}");
             GetSettingPanel.tempMusicVolume = tempVolume;
             if (tempVolume <= 0)
             {
@@ -90,7 +87,6 @@ namespace PureMVC.Tutorial
 
         public void SoundSliderActionHandle(float tempVolume)
         {
-            this.Log($"调节Sound的数值为{tempVolume}");
             GetSettingPanel.tempSoundVolume = tempVolume;
             if (tempVolume <= 0)
             {

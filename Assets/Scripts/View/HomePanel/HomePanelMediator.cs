@@ -47,13 +47,11 @@ namespace PureMVC.Tutorial
 
         public void PlayActionHandle()
         {
-            this.Log("加载商店面板");
             SendNotification(Notification.PlayGameCommond,null,null) ;
             SendNotification(Notification.CloseHomePanel, null, null);
         }
         public void SettingActionHandle()
         {
-            this.Log("加载设置面板");
             SendNotification(Notification.OpenSettingCommond, null,"UI");
             SendNotification(Notification.CloseHomePanel, null, null);
         }

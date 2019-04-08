@@ -38,8 +38,8 @@ namespace PureMVC.Tutorial
             tempGlobalData = gloalData;
             currencyType = (CurrencyType)UnityEngine.Random.Range(1, 4);
 
-            itemIcon.sprite = ResourcesManager.GetInstance.LoadSprite(currencyType + "Cup");
-            this.Log(itemIcon.sprite.ToString());
+            priceIcon.sprite = ResourcesManager.GetInstance.LoadSprite(currencyType + "Cup");
+
             number = UnityEngine.Random.Range(20, 50);
             numberText.text = number.ToString();
             buyButton.onClick.AddListener(BuyButtonOnClick);

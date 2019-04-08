@@ -38,7 +38,7 @@ namespace PureMVC.Tutorial
             listNotificationInterests.Add(Notification.ChangeGlodCup);
             listNotificationInterests.Add(Notification.ChangeSilverCup);
             listNotificationInterests.Add(Notification.ChangeBronzeCup);
-
+            listNotificationInterests.Add(Notification.CloseCurrencyPanel);
             return listNotificationInterests.ToArray();
         }
 
@@ -69,6 +69,11 @@ namespace PureMVC.Tutorial
                     {
                         gloalData.BronzeCup = gloalData.BronzeCup - tempNumber;
                         GetCurrencyPanel.ChangeCup(CurrencyType.Bronze, gloalData.BronzeCup);
+                        break;
+                    }
+                case Notification.CloseCurrencyPanel:
+                    {
+                        GetCurrencyPanel.CloseCurrencyPanel();
                         break;
                     }
                 default:

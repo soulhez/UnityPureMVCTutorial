@@ -99,7 +99,11 @@ namespace PureMVC.Tutorial
                 default:
                     break;
             }
+        }
 
+        public void CloseCurrencyPanel()
+        {
+            Destroy(gameObject);
         }
     }
 }

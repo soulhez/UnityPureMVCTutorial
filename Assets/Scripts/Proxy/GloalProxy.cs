@@ -49,7 +49,6 @@ namespace PureMVC.Tutorial
         {
             string jsonStr = JsonMapper.ToJson(GetGlobalData);
 
-            this.Log(jsonStr);
             if (!Directory.Exists(Application.streamingAssetsPath))
             {
                 Directory.CreateDirectory(Application.streamingAssetsPath);

@@ -43,16 +43,6 @@ namespace PureMVC.Tutorial
         {
             GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
             GlobalData gloalData = gloalDataProxy.GetGlobalData;
-            if (gloalData.BoyOrGirl == 0)
-            {
-                GetStorePanel.girl.SetActive(true);
-                GetStorePanel.boy.SetActive(false);
-            }
-            else
-            {
-                GetStorePanel.girl.SetActive(false);
-                GetStorePanel.boy.SetActive(true);
-            }
             int count = gloalData.ItemCount;
             for (int i = 0; i < count; i++)
             {
@@ -92,6 +82,7 @@ namespace PureMVC.Tutorial
 
         public void CloseOnClickActionHandle()
         {
+            SendNotification(Notification.CloseCurrencyPanel, null, null);
             SendNotification(Notification.OpenHomePanel, null, null);
         }
 

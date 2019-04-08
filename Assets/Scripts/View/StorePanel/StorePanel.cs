@@ -71,6 +71,18 @@ namespace PureMVC.Tutorial
             {
                 warmThemeToggle.isOn = true;
             }
+
+            if (gloalData.BoyOrGirl == 0)
+            {
+                girl.SetActive(true);
+                boy.SetActive(false);
+            }
+            else
+            {
+                girl.SetActive(false);
+                boy.SetActive(true);
+            }
+
         }
 
         protected override void RegisterComponent()
