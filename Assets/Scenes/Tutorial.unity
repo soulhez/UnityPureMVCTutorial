@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 60107928}
   - component: {fileID: 60107929}
-  - component: {fileID: 60107930}
   - component: {fileID: 60107927}
   m_Layer: 0
   m_Name: GameStart
@@ -178,18 +177,6 @@ MonoBehaviour:
   shakeAcceleration: 100
   maxLogs: 1000
   scrollPosition: {x: 0, y: 0}
---- !u!114 &60107930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60107926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5588306bc5a6dab4d98568b7972db3d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &89825146
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +187,6 @@ GameObject:
   m_Component:
   - component: {fileID: 89825149}
   - component: {fileID: 89825147}
-  - component: {fileID: 89825148}
   m_Layer: 0
   m_Name: Camera_UI
   m_TagString: Untagged
@@ -250,14 +236,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &89825148
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89825146}
-  m_Enabled: 1
 --- !u!4 &89825149
 Transform:
   m_ObjectHideFlags: 0

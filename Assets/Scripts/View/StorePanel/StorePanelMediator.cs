@@ -66,7 +66,6 @@ namespace PureMVC.Tutorial
         {
             if (tempIs)
             {
-                this.Log("冷色主题");
                 SendNotification(Notification.ColdTheme, null,null);
             }
         }
@@ -75,7 +74,6 @@ namespace PureMVC.Tutorial
         {
             if (tempIs)
             {
-                this.Log("暖色主题");
                 SendNotification(Notification.WarmTheme, null, null);
             }
         }
@@ -96,12 +94,12 @@ namespace PureMVC.Tutorial
 
         public override void HandleNotification(INotification notification)
         {
+            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
             switch (notification.Name)
             {
                 case Notification.ColdTheme:
                     {
-                        GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
-                        GlobalData gloalData = gloalDataProxy.GetGlobalData;
                         gloalData.ThemeIndex = 1;
                         for (int i = 0; i < GetStorePanel.itemComponents.Count; i++)
                         {
@@ -111,8 +109,6 @@ namespace PureMVC.Tutorial
                     }
                     case Notification.WarmTheme:
                     {
-                        GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
-                        GlobalData gloalData = gloalDataProxy.GetGlobalData;
                         gloalData.ThemeIndex = 2;
                         for (int i = 0; i < GetStorePanel.itemComponents.Count; i++)
                         {

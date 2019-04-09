@@ -34,12 +34,12 @@ namespace PureMVC.Tutorial
 
         private void OnDisable()
         {
-            this.Log("OnDisable");
+    
         }
 
         private void OnEnable()
         {
-            this.Log("OnEnable");
+     
         }
 
         private void Update()
