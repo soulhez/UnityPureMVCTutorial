@@ -17,7 +17,7 @@ namespace PureMVC.Tutorial
 {
     public class SettingPanel : Panel
     {
-        public const string settingPanelMediatorName = "settingPanelMediator";
+        public const string SettingPanelMediatorName = "SettingPanelMediator";
 
         #region Component
         [SerializeField]
@@ -29,7 +29,7 @@ namespace PureMVC.Tutorial
         [SerializeField]
         private Slider soundSlider = null;
         [SerializeField]
-        private Button closeButton = null;
+        private AnimatedButton closeButton = null;
         [SerializeField]
         private GameObject soundBg = null;
         [SerializeField]
@@ -55,16 +55,14 @@ namespace PureMVC.Tutorial
             grilToggle = transform.Find("ToggleGroup/GirlToggle").GetComponent<Toggle>();
             musicSlider = transform.Find("MusicImage/musicSlider").GetComponent<Slider>();
             soundSlider = transform.Find("SoundImage/soundSlider").GetComponent<Slider>();
-            closeButton = transform.Find("closeButton").GetComponent<Button>();
+            closeButton = transform.Find("closeButton").GetComponent<AnimatedButton>();
             musicBg = transform.Find("MusicImage/BGImage").gameObject;
             soundBg = transform.Find("SoundImage/BGImage").gameObject;
-
-            InitDataAndSetComponentState();
         }
 
-        public void InitDataAndSetComponentState()
+        protected override void InitDataAndSetComponentState()
         {
-            GlobalDataProxy globalDataProxy = (GlobalDataProxy) ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME);
+            GlobalDataProxy globalDataProxy = (GlobalDataProxy)ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME);
             GlobalData GlobalData = globalDataProxy.GetGlobalData;
             int tempBoyOrGirl = GlobalData.BoyOrGirl;
             if (tempBoyOrGirl == 0)
@@ -75,7 +73,7 @@ namespace PureMVC.Tutorial
             {
                 boyToggle.isOn = true;
             }
-            tempMusicVolume =(float) GlobalData.MusicVolume;
+            tempMusicVolume = (float)GlobalData.MusicVolume;
             musicSlider.value = tempMusicVolume;
             if (tempMusicVolume <= 0)
             {
@@ -128,12 +126,12 @@ namespace PureMVC.Tutorial
 
         protected sealed override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new SettingPanelMediator(settingPanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new SettingPanelMediator(SettingPanelMediatorName, this));
         }
 
         protected sealed override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(settingPanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(SettingPanelMediatorName);
         }
         #endregion
 

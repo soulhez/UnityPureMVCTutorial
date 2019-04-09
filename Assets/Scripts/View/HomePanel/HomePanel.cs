@@ -16,13 +16,13 @@ namespace PureMVC.Tutorial
 {
     public class HomePanel : Panel
     {
-        public const string homePanelMediatorName = "HomePanelMediator";
+        public const string HomePanelMediatorName = "HomePanelMediator";
 
         #region Component
         [SerializeField]
-        private Button playButton = null;
+        private AnimatedButton playButton = null;
         [SerializeField]
-        private Button settingButton = null;
+        private AnimatedButton settingButton = null;
         [SerializeField]
         private CanvasGroup canvasGroup = null;
 
@@ -33,11 +33,14 @@ namespace PureMVC.Tutorial
         #region 初始化相关
         protected sealed override void InitPanel()
         {
-            playButton = transform.Find("playButton").GetComponent<Button>();
-            settingButton = transform.Find("settingButton").GetComponent<Button>();
+            playButton = transform.Find("playButton").GetComponent<AnimatedButton>();
+            settingButton = transform.Find("settingButton").GetComponent<AnimatedButton>();
             canvasGroup = GetComponent<CanvasGroup>();
         }
+        protected override void InitDataAndSetComponentState()
+        {
 
+        }
         protected sealed override void RegisterComponent()
         {
             playButton.onClick.AddListener(PlayButtonOnClick);
@@ -64,12 +67,12 @@ namespace PureMVC.Tutorial
 
         protected sealed override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(homePanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(HomePanelMediatorName, this));
         }
 
         protected sealed override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(homePanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(HomePanelMediatorName);
         }
 
         #endregion

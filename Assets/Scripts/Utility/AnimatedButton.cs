@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
-
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace GameVanilla.Core
+namespace PureMVC.Tutorial
 {
     public class AnimatedButton : UIBehaviour, IPointerClickHandler
     {
@@ -63,7 +62,7 @@ namespace GameVanilla.Core
 
         private IEnumerator InvokeOnClickAction()
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             m_onClick.Invoke();
         }
 

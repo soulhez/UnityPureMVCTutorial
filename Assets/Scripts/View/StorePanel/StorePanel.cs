@@ -17,7 +17,7 @@ namespace PureMVC.Tutorial
 {
     public class StorePanel :Panel
     {
-        public const string storePanelMediatorName = "storePanelMediatorName";
+        public const string StorePanelMediatorName = "StorePanelMediator";
 
         #region Component
         [SerializeField]
@@ -33,13 +33,12 @@ namespace PureMVC.Tutorial
         [SerializeField]
         public Transform target = null;
         [SerializeField]
-        private Button closeButton = null;
+        private AnimatedButton closeButton = null;
 
         public Action<bool> coldThemeToggleAction = null;
         public Action<bool> warmThemeToggleAction = null;
         public Action CloseButtonAction = null;
         #endregion
-
 
         #region Data
         public List<ItemComponent> itemComponents = new List<ItemComponent>();
@@ -53,13 +52,11 @@ namespace PureMVC.Tutorial
             boy = transform.Find("people/boyImage").gameObject;
             girl = transform.Find("people/girlImage").gameObject;
             target = transform.Find("ItemScrollView/Viewport/Content");
-            closeButton = transform.Find("closeButton").GetComponent<Button>();
+            closeButton = transform.Find("closeButton").GetComponent<AnimatedButton>();
             templateItem.SetActive(false);
-
-            InitData();
         }
 
-        public void InitData()
+        protected override void InitDataAndSetComponentState()
         {
             GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
             GlobalData gloalData = gloalDataProxy.GetGlobalData;
@@ -82,7 +79,6 @@ namespace PureMVC.Tutorial
                 girl.SetActive(false);
                 boy.SetActive(true);
             }
-
         }
 
         protected override void RegisterComponent()
@@ -110,11 +106,11 @@ namespace PureMVC.Tutorial
 
         protected override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new StorePanelMediator(storePanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new StorePanelMediator(StorePanelMediatorName, this));
         }
         protected override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(storePanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(StorePanelMediatorName);
         }
 
         public void ColdThemeOnValueChanged(bool tempIs)
@@ -128,10 +124,9 @@ namespace PureMVC.Tutorial
 
         public void CloseOnClick()
         {
-            Destroy(gameObject);
             CloseButtonAction?.Invoke();
+            Destroy(gameObject);
         }
-
     }
 
 }

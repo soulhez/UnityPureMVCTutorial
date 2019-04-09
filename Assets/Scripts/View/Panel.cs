@@ -20,12 +20,14 @@ namespace PureMVC.Tutorial
       protected virtual  void Start()
         {
             InitPanel();
+            InitDataAndSetComponentState();
             RegisterComponent();
             RegisterCommond();
             RegisterMediator();
         }
 
         protected abstract void InitPanel();
+        protected abstract void InitDataAndSetComponentState();
         protected abstract void RegisterComponent();
         protected abstract void RegisterCommond();
         protected abstract void RegisterMediator();

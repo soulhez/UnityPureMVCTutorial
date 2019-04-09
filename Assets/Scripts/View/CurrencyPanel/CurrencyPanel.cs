@@ -23,7 +23,7 @@ namespace PureMVC.Tutorial
     }
     public class CurrencyPanel : Panel
     {
-        public const string currencyPanelMediatorName = "currencyPanelMediator";
+        public const string CurrencyPanelMediatorName = "CurrencyPanelMediator";
 
         #region Component
         [SerializeField]
@@ -39,10 +39,9 @@ namespace PureMVC.Tutorial
             goldText = transform.Find("GoldCupBG/numberText").GetComponent<Text>();
             silverText = transform.Find("SilverCupBG/numberText").GetComponent<Text>();
             bronzeText = transform.Find("BronzeCupBG/numberText").GetComponent<Text>();
-            InitData();
         }
 
-        public void InitData()
+        protected override void InitDataAndSetComponentState()
         {
             GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
             GlobalData gloalData = gloalDataProxy.GetGlobalData;
@@ -71,11 +70,11 @@ namespace PureMVC.Tutorial
 
         protected override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new CurrencyPanelMediator(currencyPanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new CurrencyPanelMediator(CurrencyPanelMediatorName, this));
         }
         protected override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(currencyPanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(CurrencyPanelMediatorName);
         }
         public void ChangeCup(CurrencyType tempType,int number)
         {
