@@ -52,7 +52,7 @@ namespace PureMVC.Tutorial
 
         public void CloseButtonActionHandle()
         {
-            SendNotification(Notification.SaveSettingDataCommond, GetSettingPanel, null);
+            SendNotification(Notification.LoadHomeCommond, GetSettingPanel, null);
             SendNotification(Notification.OpenHomePanel, null, null);
         }
 

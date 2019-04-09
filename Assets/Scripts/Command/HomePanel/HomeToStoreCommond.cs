@@ -15,7 +15,7 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class PlayGameCommond : SimpleCommand
+    public class HomeToStoreCommond : SimpleCommand
     {
         public override void Execute(INotification notification)
         {

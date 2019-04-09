@@ -38,6 +38,7 @@ namespace PureMVC.Tutorial
         public Action<bool> coldThemeToggleAction = null;
         public Action<bool> warmThemeToggleAction = null;
         public Action CloseButtonAction = null;
+
         #endregion
 
         #region Data
@@ -97,11 +98,11 @@ namespace PureMVC.Tutorial
 
         protected override void RegisterCommond()
         {
-
+            ApplicationFacade.Instance.RegisterCommand(Notification.StoreToHomeCommond, () => new StoreToHomeCommond());
         }
         protected override void UnRegisterCommond()
         {
-
+            ApplicationFacade.Instance.RemoveCommand(Notification.StoreToHomeCommond);
         }
 
         protected override void RegisterMediator()

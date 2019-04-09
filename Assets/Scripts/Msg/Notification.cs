@@ -23,13 +23,13 @@ namespace PureMVC.Tutorial
         public const string LoginSuccessProxy = "LoginSuccessProxy";
 
         //*********************【SettingPanel】*********************
-        public const string OpenSettingCommond = "OpenSettingCommond";
-        public const string SaveSettingDataCommond = "SaveSettingDataCommond";
+        public const string HomeToSettingCommond = "HomeToSettingCommond";
+        public const string LoadHomeCommond = "LoadHomeCommond";
 
         //*********************【HomePanel】*********************
         public const string OpenHomePanel = "OpenHomePanel";
         public const string CloseHomePanel = "CloseHomePanel";
-        public const string PlayGameCommond = "PlayGameCommond";
+        public const string HomeToStoreCommond = "HomeToStoreCommond";
 
         //*********************【CurrencyPanel】*********************
         public const string ChangeGlodCup = "ChangeGlodCup";
@@ -43,6 +43,7 @@ namespace PureMVC.Tutorial
         //*********************【StorePanel】*********************
         public const string ColdTheme = "ColdTheme";
         public const string WarmTheme = "WarmTheme";
+        public const string StoreToHomeCommond = "StoreToHomeCommond";
 
     }
 }

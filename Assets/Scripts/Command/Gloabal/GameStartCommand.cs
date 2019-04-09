@@ -13,7 +13,7 @@ namespace PureMVC.Tutorial
         public override void Execute(INotification notification)
         {
             base.Execute(notification);
-            this.Log("游戏启动成功，准备连接服务器获取数据");
+            this.Log("游戏启动成功");
 
             GameObject canvas = GameObject.Find("Canvas");
             GameObject tempObj = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefab/HomePanel"));

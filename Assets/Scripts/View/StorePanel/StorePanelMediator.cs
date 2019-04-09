@@ -80,8 +80,7 @@ namespace PureMVC.Tutorial
 
         public void CloseOnClickActionHandle()
         {
-            SendNotification(Notification.CloseCurrencyPanel, null, null);
-            SendNotification(Notification.OpenHomePanel, null, null);
+            SendNotification(Notification.StoreToHomeCommond, null, null);
         }
 
         public override string[] ListNotificationInterests()

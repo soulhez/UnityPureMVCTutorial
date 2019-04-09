@@ -15,7 +15,7 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class SaveSettingDataCommond : SimpleCommand
+    public class SettingToHomeCommond : SimpleCommand
     {
         public override void Execute(INotification notification)
         {

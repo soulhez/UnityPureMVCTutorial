@@ -19,11 +19,11 @@ namespace PureMVC.Tutorial
         public ApplicationFacade applicationFacade = null;
         private void Awake()
         {
+            UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
             applicationFacade = new ApplicationFacade();
         }
         void Start()
         {
-            UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
             applicationFacade.StartUpHandle();
         }
 

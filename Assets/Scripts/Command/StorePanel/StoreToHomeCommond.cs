@@ -15,16 +15,14 @@ using Custom.Log;
 
 namespace PureMVC.Tutorial
 {
-    public class OpenSettingCommond : SimpleCommand
+    public class StoreToHomeCommond : SimpleCommand
     {
         public override void Execute(INotification notification)
         {
             base.Execute(notification);
-
-            GameObject canvasObj = GameObject.Find("Canvas");
-            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
-            tempObj.transform.SetParent(canvasObj.transform, false);
-            tempObj.AddComponent<SettingPanel>();
+            SendNotification(Notification.CloseCurrencyPanel, null, null);
+            SendNotification(Notification.OpenHomePanel, null, null);
         }
     }
 }
+

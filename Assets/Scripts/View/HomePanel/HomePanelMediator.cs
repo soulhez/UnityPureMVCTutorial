@@ -47,12 +47,12 @@ namespace PureMVC.Tutorial
 
         public void PlayActionHandle()
         {
-            SendNotification(Notification.PlayGameCommond,null,null) ;
+            SendNotification(Notification.HomeToStoreCommond,null,null) ;
             SendNotification(Notification.CloseHomePanel, null, null);
         }
         public void SettingActionHandle()
         {
-            SendNotification(Notification.OpenSettingCommond, null,"UI");
+            SendNotification(Notification.HomeToSettingCommond, null,"UI");
             SendNotification(Notification.CloseHomePanel, null, null);
         }
 
