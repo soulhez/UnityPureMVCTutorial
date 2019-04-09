@@ -116,12 +116,12 @@ namespace PureMVC.Tutorial
 
         protected sealed override void RegisterCommond()
         {
-            ApplicationFacade.Instance.RegisterCommand(Notification.LoadHomeCommond, () => new SettingToHomeCommond());
+            ApplicationFacade.Instance.RegisterCommand(Notification.SettingToHomeCommond, () => new SettingToHomeCommond());
         }
 
         protected sealed override void UnRegisterCommond()
         {
-            ApplicationFacade.Instance.RemoveCommand(Notification.LoadHomeCommond);
+            ApplicationFacade.Instance.RemoveCommand(Notification.SettingToHomeCommond);
         }
 
         protected sealed override void RegisterMediator()

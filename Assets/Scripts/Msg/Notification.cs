@@ -19,17 +19,15 @@ namespace PureMVC.Tutorial
         //*********************【Framework】*********************
         public const string StartUp = "StartUp";
         public const string GameStart = "GameStart";
-        public const string LoginSuccess = "LoginSuccess";
-        public const string LoginSuccessProxy = "LoginSuccessProxy";
 
         //*********************【SettingPanel】*********************
-        public const string HomeToSettingCommond = "HomeToSettingCommond";
-        public const string LoadHomeCommond = "LoadHomeCommond";
+        public const string SettingToHomeCommond = "SettingToHomeCommond";
 
         //*********************【HomePanel】*********************
         public const string OpenHomePanel = "OpenHomePanel";
         public const string CloseHomePanel = "CloseHomePanel";
         public const string HomeToStoreCommond = "HomeToStoreCommond";
+        public const string HomeToSettingCommond = "HomeToSettingCommond";
 
         //*********************【CurrencyPanel】*********************
         public const string ChangeGlodCup = "ChangeGlodCup";

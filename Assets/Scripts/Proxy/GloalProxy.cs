@@ -64,8 +64,6 @@ namespace PureMVC.Tutorial
             }
             string jsonStr = File.ReadAllText(Application.streamingAssetsPath + "/" + "GlobalData.json");
 
-            this.Log(jsonStr);
-
             Data = JsonMapper.ToObject<GlobalData>(jsonStr);
         }
     }
