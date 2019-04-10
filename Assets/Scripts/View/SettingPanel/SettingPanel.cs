@@ -12,6 +12,7 @@ using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
 using Custom.Log;
+using UnityEngine.EventSystems;
 
 namespace PureMVC.Tutorial
 {
@@ -38,8 +39,15 @@ namespace PureMVC.Tutorial
         public Action CloseButtonAction = null;
         public Action<bool> BoyToggleAction;
         public Action<bool> GrilToggleAction;
-        public Action<float> MusicSliderAction;
-        public Action<float> SoundSliderAction;
+        public Action<float> MusicSliderChangeAction;
+        public Action<float> SoundSliderChangeAction;
+        public Action<BaseEventData> MusicSliderPointerDownAction;
+        public Action<BaseEventData> SoundSliderPointerDownAction;
+
+        [SerializeField]
+        private EventTrigger musicSliderTrigger = null;
+        [SerializeField]
+        private EventTrigger soundSliderTrigger = null;
         #endregion
 
         #region Data
@@ -58,7 +66,10 @@ namespace PureMVC.Tutorial
             closeButton = transform.Find("closeButton").GetComponent<AnimatedButton>();
             musicBg = transform.Find("MusicImage/BGImage").gameObject;
             soundBg = transform.Find("SoundImage/BGImage").gameObject;
+            
+
         }
+
 
         protected override void InitDataAndSetComponentState()
         {
@@ -103,6 +114,18 @@ namespace PureMVC.Tutorial
             closeButton.onClick.AddListener(CloseButtonOnClick);
             musicSlider.onValueChanged.AddListener(MusicSliderOnValueChanged);
             soundSlider.onValueChanged.AddListener(SoundSliderOnValueChanged);
+
+             musicSliderTrigger = musicSlider.gameObject.AddComponent<EventTrigger>();
+            var musicPointer = new EventTrigger.Entry();
+            musicPointer.eventID = EventTriggerType.PointerDown;
+            musicPointer.callback.AddListener((baseEventData) => { MusicSliderPointerDownAction?.Invoke(baseEventData); });
+            musicSliderTrigger.triggers.Add(musicPointer);
+
+             soundSliderTrigger = soundSlider.gameObject.AddComponent<EventTrigger>();
+            var soundPointer = new EventTrigger.Entry();
+            soundPointer.eventID = EventTriggerType.PointerDown;
+            soundPointer.callback.AddListener((baseEventData) => { MusicSliderPointerDownAction?.Invoke(baseEventData); });
+            soundSliderTrigger.triggers.Add(soundPointer);
         }
 
         protected sealed override void UnRegisterComponent()
@@ -112,6 +135,9 @@ namespace PureMVC.Tutorial
             closeButton.onClick.RemoveAllListeners();
             musicSlider.onValueChanged.RemoveAllListeners();
             soundSlider.onValueChanged.RemoveAllListeners();
+
+            musicSliderTrigger.triggers.Clear();
+            soundSliderTrigger.triggers.Clear();
         }
 
         protected sealed override void RegisterCommond()
@@ -135,27 +161,31 @@ namespace PureMVC.Tutorial
         }
         #endregion
 
-        public void BoyToggleOnValueChanged(bool tempBool)
+        #region Event
+        private void BoyToggleOnValueChanged(bool tempBool)
         {
             BoyToggleAction?.Invoke(tempBool);
         }
-        public void GrilToggleOnValueChanged(bool tempBool)
+        private void GrilToggleOnValueChanged(bool tempBool)
         {
             GrilToggleAction?.Invoke(tempBool);
         }
-        public void MusicSliderOnValueChanged(float tempVolume)
+        private void MusicSliderOnValueChanged(float tempVolume)
         {
-            MusicSliderAction?.Invoke(tempVolume);
+            MusicSliderChangeAction?.Invoke(tempVolume);
         }
-        public void SoundSliderOnValueChanged(float tempVolume)
+        private void SoundSliderOnValueChanged(float tempVolume)
         {
-            SoundSliderAction?.Invoke(tempVolume);
+            SoundSliderChangeAction?.Invoke(tempVolume);
         }
-        public void CloseButtonOnClick()
+        private void CloseButtonOnClick()
         {
             CloseButtonAction?.Invoke();
             Destroy(gameObject);
         }
+        #endregion
+
+        #region ComponentHandle
         public void OpenSoundMuteBg()
         {
             if (!soundBg.activeInHierarchy)
@@ -178,5 +208,6 @@ namespace PureMVC.Tutorial
         {
             musicBg.SetActive(false);
         }
+        #endregion
     }
 }

@@ -21,10 +21,11 @@ namespace PureMVC.Tutorial
         {
             UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
             applicationFacade = new ApplicationFacade();
+            applicationFacade.StartUpHandle();
         }
         void Start()
         {
-            applicationFacade.StartUpHandle();
+            applicationFacade.GameStartHandle();
         }
 
         private void OnDestroy()

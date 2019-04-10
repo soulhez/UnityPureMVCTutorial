@@ -21,9 +21,9 @@ namespace PureMVC.Tutorial
                 this.LogError("GameStart is Null,Please check it");
                 return;
             }
-
             gameStart.AddComponent<ResourcesManager>();
             gameStart.AddComponent<SoundManager>();
+            gameStart.AddComponent<ManagerFacade>();
         }
     }
 }

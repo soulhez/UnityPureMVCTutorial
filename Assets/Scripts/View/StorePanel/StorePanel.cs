@@ -45,6 +45,8 @@ namespace PureMVC.Tutorial
         public List<ItemComponent> itemComponents = new List<ItemComponent>();
         #endregion
 
+        #region 初始化相关
+
         protected override void InitPanel()
         {
             templateItem = transform.Find("ItemScrollView/Viewport/template/Item").gameObject;
@@ -114,20 +116,24 @@ namespace PureMVC.Tutorial
             ApplicationFacade.Instance.RemoveMediator(StorePanelMediatorName);
         }
 
-        public void ColdThemeOnValueChanged(bool tempIs)
+        #endregion
+
+        #region Event
+        private void ColdThemeOnValueChanged(bool tempIs)
         {
             coldThemeToggleAction?.Invoke(tempIs);
         }
-        public void WarmThemeOnValueChanged(bool tempIs)
+        private void WarmThemeOnValueChanged(bool tempIs)
         {
             warmThemeToggleAction?.Invoke(tempIs);
         }
 
-        public void CloseOnClick()
+        private void CloseOnClick()
         {
             CloseButtonAction?.Invoke();
             Destroy(gameObject);
         }
+        #endregion
     }
 
 }

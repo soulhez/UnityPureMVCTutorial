@@ -22,7 +22,7 @@ namespace PureMVC.Tutorial
             base.Execute(notification);
 
             GameObject canvasObj = GameObject.Find("Canvas");
-            GameObject tempObj = ResourcesManager.GetInstance.LoadPrefab("SettingPanel");
+            GameObject tempObj = ManagerFacade.Instance.LoadPrefab("SettingPanel");
             tempObj.transform.SetParent(canvasObj.transform, false);
             tempObj.AddComponent<SettingPanel>();
         }

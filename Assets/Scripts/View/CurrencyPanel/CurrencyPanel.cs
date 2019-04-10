@@ -34,6 +34,7 @@ namespace PureMVC.Tutorial
         private Text bronzeText = null;
         #endregion
 
+        #region 初始化相关
         protected override void InitPanel()
         {
             goldText = transform.Find("GoldCupBG/numberText").GetComponent<Text>();
@@ -50,19 +51,21 @@ namespace PureMVC.Tutorial
             bronzeText.text = gloalData.BronzeCup.ToString();
         }
 
-
         protected override void RegisterComponent()
         {
 
         }
+
         protected override void UnRegisterComponent()
         {
 
         }
+
         protected override void RegisterCommond()
         {
 
         }
+
         protected override void UnRegisterCommond()
         {
 
@@ -72,10 +75,15 @@ namespace PureMVC.Tutorial
         {
             ApplicationFacade.Instance.RegisterMediator(new CurrencyPanelMediator(CurrencyPanelMediatorName, this));
         }
+
         protected override void UnRegisterMediator()
         {
             ApplicationFacade.Instance.RemoveMediator(CurrencyPanelMediatorName);
         }
+
+        #endregion
+
+        #region ComponentHandle
         public void ChangeCup(CurrencyType tempType,int number)
         {
             switch (tempType)
@@ -104,6 +112,7 @@ namespace PureMVC.Tutorial
         {
             Destroy(gameObject);
         }
+        #endregion
     }
 }
 

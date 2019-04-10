@@ -12,6 +12,7 @@ using PureMVC.Patterns.Mediator;
 using PureMVC.Patterns.Observer;
 using PureMVC.Patterns.Proxy;
 using Custom.Log;
+using UnityEngine.EventSystems;
 
 namespace PureMVC.Tutorial
 {
@@ -36,8 +37,20 @@ namespace PureMVC.Tutorial
             GetSettingPanel.CloseButtonAction = CloseButtonActionHandle;
             GetSettingPanel.BoyToggleAction = BoyToggleActionHandle;
             GetSettingPanel.GrilToggleAction = GrilToggleActionHandle;
-            GetSettingPanel.MusicSliderAction = MusicSliderActionHandle;
-            GetSettingPanel.SoundSliderAction = SoundSliderActionHandle;
+            GetSettingPanel.MusicSliderChangeAction = MusicSliderActionHandle;
+            GetSettingPanel.SoundSliderChangeAction = SoundSliderActionHandle;
+
+            GetSettingPanel.MusicSliderPointerDownAction = MusicSliderPointerDownActionHandle;
+            GetSettingPanel.SoundSliderPointerDownAction = SoundSliderPointerDownActionHandle;
+        }
+
+        private void MusicSliderPointerDownActionHandle(BaseEventData obj)
+        {
+            ManagerFacade.Instance.PlayMusic("Plop");
+        }
+        private void SoundSliderPointerDownActionHandle(BaseEventData obj)
+        {
+            ManagerFacade.Instance.PlayMusic("Plop");
         }
 
         public override void OnRemove()
@@ -46,12 +59,15 @@ namespace PureMVC.Tutorial
             GetSettingPanel.CloseButtonAction = null;
             GetSettingPanel.BoyToggleAction = null;
             GetSettingPanel.GrilToggleAction = null;
-            GetSettingPanel.MusicSliderAction = null;
-            GetSettingPanel.SoundSliderAction = null;
+            GetSettingPanel.MusicSliderChangeAction = null;
+            GetSettingPanel.SoundSliderChangeAction = null;
         }
 
         public void CloseButtonActionHandle()
         {
+            //播放音效
+            ManagerFacade.Instance.PlayMusic("Button");
+
             SendNotification(Notification.SettingToHomeCommond, GetSettingPanel, null);
             SendNotification(Notification.OpenHomePanel, null, null);
         }
@@ -60,6 +76,9 @@ namespace PureMVC.Tutorial
         {
             if (tempBool)
             {
+                //播放音效
+                ManagerFacade.Instance.PlayMusic("Plop");
+
                 GetSettingPanel.tempBoyOrGirl = 1;
             }
         }
@@ -68,6 +87,9 @@ namespace PureMVC.Tutorial
         {
             if (tempBool)
             {
+                //播放音效
+                ManagerFacade.Instance.PlayMusic("Plop");
+
                 GetSettingPanel.tempBoyOrGirl = 0;
             }
         }
@@ -101,7 +123,7 @@ namespace PureMVC.Tutorial
         public override string[] ListNotificationInterests()
         {
             List<string> listNotificationInterests = new List<string>();
-            listNotificationInterests.Add("123123");
+            listNotificationInterests.Add("null");
 
             return listNotificationInterests.ToArray();
         }
@@ -110,9 +132,9 @@ namespace PureMVC.Tutorial
         {
             switch (notification.Name)
             {
-                case "123":
+                case "null":
                     {
-                        this.Log("123123123");
+                        this.Log("null");
                         break;
                     }
 

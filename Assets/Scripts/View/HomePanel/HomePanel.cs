@@ -77,16 +77,19 @@ namespace PureMVC.Tutorial
 
         #endregion
 
-        public void PlayButtonOnClick()
+        #region Event
+        private void PlayButtonOnClick()
         {
             PlayAction?.Invoke();
         }
 
-        public void SettingButtonOnClick()
+        private void SettingButtonOnClick()
         {
             SettingAction?.Invoke();
         }
+        #endregion
 
+        #region ComponentHandle
         public void OpenHomePanel()
         {
             canvasGroup.alpha = 1;
@@ -100,6 +103,8 @@ namespace PureMVC.Tutorial
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
         }
+
+        #endregion
     }
 }
 

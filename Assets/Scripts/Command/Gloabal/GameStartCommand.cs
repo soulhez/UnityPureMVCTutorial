@@ -20,6 +20,13 @@ namespace PureMVC.Tutorial
             tempObj.name = "HomePanel";
             tempObj.transform.SetParent(canvas.transform, false);
             tempObj.AddComponent<HomePanel>();
+            //获取数据
+            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
+            GlobalData gloalData = gloalDataProxy.GetGlobalData;
+            //初始化声音
+            ManagerFacade.Instance.SetMusicVolume((float)gloalData.MusicVolume);
+            ManagerFacade.Instance.SetMusicVolume((float)gloalData.SoundVolume);
+            ManagerFacade.Instance.PlayMusic("Background Music", SoundManager.SoundType.BackGround);
 
         }
     }

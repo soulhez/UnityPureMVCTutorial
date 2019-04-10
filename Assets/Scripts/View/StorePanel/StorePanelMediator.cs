@@ -66,6 +66,9 @@ namespace PureMVC.Tutorial
         {
             if (tempIs)
             {
+                //播放音效
+                ManagerFacade.Instance.PlayMusic("Plop");
+
                 SendNotification(Notification.ColdTheme, null,null);
             }
         }
@@ -74,12 +77,18 @@ namespace PureMVC.Tutorial
         {
             if (tempIs)
             {
+                //播放音效
+                ManagerFacade.Instance.PlayMusic("Plop");
+
                 SendNotification(Notification.WarmTheme, null, null);
             }
         }
 
         public void CloseOnClickActionHandle()
         {
+            //播放音效
+            ManagerFacade.Instance.PlayMusic("Button");
+
             SendNotification(Notification.StoreToHomeCommond, null, null);
         }
 

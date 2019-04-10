@@ -38,6 +38,10 @@ namespace PureMVC.Tutorial
         public void StartUpHandle()
         {
             SendNotification(Notification.StartUp);
+
+        }
+        public void GameStartHandle()
+        {
             SendNotification(Notification.GameStart);
         }
 

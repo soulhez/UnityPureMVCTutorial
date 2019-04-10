@@ -18,7 +18,7 @@ namespace PureMVC.Tutorial
     {
         public Dictionary<string, UnityEngine.Object> resourcesDictionary = new Dictionary<string, UnityEngine.Object>();
 
-        public static ResourcesManager GetInstance
+        public new static ResourcesManager Instance
         {
             get
             {

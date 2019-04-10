@@ -38,7 +38,7 @@ namespace PureMVC.Tutorial
             tempGlobalData = gloalData;
             currencyType = (CurrencyType)UnityEngine.Random.Range(1, 4);
 
-            priceIcon.sprite = ResourcesManager.GetInstance.LoadSprite(currencyType + "Cup");
+            priceIcon.sprite = ManagerFacade.Instance.LoadSprite(currencyType + "Cup");
 
             number = UnityEngine.Random.Range(20, 50);
             numberText.text = number.ToString();
@@ -66,6 +66,9 @@ namespace PureMVC.Tutorial
 
         public void BuyButtonOnClick()
         {
+            //播放音效
+            ManagerFacade.Instance.PlayMusic("ComplimentText");
+
             switch (currencyType)
             {
                 case CurrencyType.Gold:

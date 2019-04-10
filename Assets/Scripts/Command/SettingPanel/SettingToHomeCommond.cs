@@ -33,6 +33,10 @@ namespace PureMVC.Tutorial
             gloalData.MusicVolume = settingPanelView.tempMusicVolume;
             gloalData.SoundVolume = settingPanelView.tempSoundVolume;
             gloalDataProxy.SerializeData();
+
+            //设置声音相关
+            ManagerFacade.Instance.SetMusicVolume((float)gloalData.MusicVolume);
+            ManagerFacade.Instance.SetSoundVolume((float)gloalData.SoundVolume);
         }
     }
 }

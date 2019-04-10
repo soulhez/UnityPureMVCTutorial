@@ -47,11 +47,17 @@ namespace PureMVC.Tutorial
 
         public void PlayActionHandle()
         {
+            //播放音效
+            ManagerFacade.Instance.PlayMusic("Button");
+
             SendNotification(Notification.HomeToStoreCommond,null,null) ;
             SendNotification(Notification.CloseHomePanel, null, null);
         }
         public void SettingActionHandle()
         {
+            //播放音效
+            ManagerFacade.Instance.PlayMusic("Button");
+
             SendNotification(Notification.HomeToSettingCommond, null,"UI");
             SendNotification(Notification.CloseHomePanel, null, null);
         }

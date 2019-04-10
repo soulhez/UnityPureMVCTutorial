@@ -28,8 +28,18 @@ namespace PureMVC.Tutorial
         public AudioSource backGroundAudioSource = null;
         public AudioSource otherAudioSource = null;
 
-        void Start()
+        public new static SoundManager Instance
         {
+            get
+            {
+                return instance as SoundManager;
+            }
+        }
+
+        protected sealed override void Awake()
+        {
+            base.Awake();
+
             defaultAudioSource = gameObject.AddComponent<AudioSource>();
             backGroundAudioSource = gameObject.AddComponent<AudioSource>();
             otherAudioSource = gameObject.AddComponent<AudioSource>();
@@ -38,11 +48,11 @@ namespace PureMVC.Tutorial
             otherAudioSource.playOnAwake = false;
         }
 
-        public void PlayMusic(string musicName, SoundType soundType= SoundType.Default)
+        public void PlayMusic(string musicName, SoundType soundType = SoundType.Default)
         {
             if (!audioClipDictionary.ContainsKey(musicName))
             {
-                AudioClip audioClip = Resources.Load<AudioClip>(musicName);
+                AudioClip audioClip = Resources.Load<AudioClip>("Sound/" + musicName);
                 audioClipDictionary.Add(musicName, audioClip);
             }
             if (soundType == SoundType.Default)
@@ -58,6 +68,7 @@ namespace PureMVC.Tutorial
             {
                 if (backGroundAudioSource.isPlaying == true)
                 {
+
                     backGroundAudioSource.Stop();
                 }
                 backGroundAudioSource.clip = audioClipDictionary[musicName];
@@ -72,6 +83,17 @@ namespace PureMVC.Tutorial
                 otherAudioSource.clip = audioClipDictionary[musicName];
                 otherAudioSource.Play();
             }
+        }
+
+        public void SetMusicVolume(float volume)
+        {
+            backGroundAudioSource.volume = volume;
+        }
+
+        public void SetSoundVolume(float volume)
+        {
+            defaultAudioSource.volume = volume;
+            otherAudioSource.volume = volume;
         }
     }
 }

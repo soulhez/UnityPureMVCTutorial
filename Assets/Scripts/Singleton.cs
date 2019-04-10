@@ -22,7 +22,7 @@ namespace PureMVC.Tutorial
         protected readonly object syncRoot = new object();
         protected static readonly object staticSyncRoot = new object();
 
-        public static Singleton<T> Instance
+        protected static Singleton<T> Instance
         {
             get
             {
@@ -30,7 +30,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void Awake()
+        protected virtual void Awake()
         {
             instance = this;
         }
