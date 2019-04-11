@@ -45,6 +45,7 @@ namespace PureMVC.Tutorial
             otherAudioSource = gameObject.AddComponent<AudioSource>();
             defaultAudioSource.playOnAwake = false;
             backGroundAudioSource.playOnAwake = false;
+            backGroundAudioSource.loop = true;
             otherAudioSource.playOnAwake = false;
         }
 
