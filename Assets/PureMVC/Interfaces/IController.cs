@@ -38,12 +38,32 @@ namespace PureMVC.Interfaces
     /// <seealso cref="ICommand"/>
     public interface IController
     {
-        void RegisterCommand(string notificationName, Func<ICommand> commandClassRef);
+        /// <summary>
+        /// Register a particular <c>ICommand</c> class as the handler 
+        ///  for a particular <c>INotification</c>.
+        /// </summary>
+        /// <param name="notificationName">the name of the <c>INotification</c></param>
+        /// <param name="commandFunc">the FuncDelegate of the <c>ICommand</c></param>
+        void RegisterCommand(string notificationName, Func<ICommand> commandFunc);
 
+        /// <summary>
+        /// Execute the <c>ICommand</c> previously registered as the
+        /// handler for <c>INotification</c>s with the given notification name.
+        /// </summary>
+        /// <param name="notification">the <c>INotification</c> to execute the associated <c>ICommand</c> for</param>
         void ExecuteCommand(INotification notification);
 
+        /// <summary>
+        /// Remove a previously registered <c>ICommand</c> to <c>INotification</c> mapping.
+        /// </summary>
+        /// <param name="notificationName">the name of the <c>INotification</c> to remove the <c>ICommand</c> mapping for</param>
         void RemoveCommand(string notificationName);
 
+        /// <summary>
+        /// Check if a Command is registered for a given Notification 
+        /// </summary>
+        /// <param name="notificationName">whether a Command is currently registered for the given <c>notificationName</c>.</param>
+        /// <returns></returns>
         bool HasCommand(string notificationName);
     }
 }
