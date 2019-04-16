@@ -1,68 +1,35 @@
-﻿//
-//  PureMVC C# Standard
-//
-//  Copyright(c) 2017 Saad Shams <saad.shams@puremvc.org>
-//  Your reuse is governed by the Creative Commons Attribution 3.0 License
-//
-
-using System;
+﻿using System;
 
 namespace PureMVC.Interfaces
 {
     /// <summary>
-    /// The interface definition for a PureMVC Controller.
+    /// Controller接口 3个核心类之一Controller继承的接口
     /// </summary>
-    /// <remarks>
-    ///     <para>
-    ///         In PureMVC, an <c>IController</c> implementor 
-    ///         follows the 'Command and Controller' strategy, and 
-    ///         assumes these responsibilities:
-    ///         <list type="bullet">
-    ///             <item>Remembering which <c>ICommand</c>s 
-    ///             are intended to handle which <c>INotifications</c>.
-    ///             </item>
-    ///             <item>Registering itself as an <c>IObserver</c> with
-    ///             the <c>View</c> for each <c>INotification</c> 
-    ///             that it has an <c>ICommand</c> mapping for.
-    ///             </item>
-    ///             <item>Creating a new instance of the proper <c>ICommand</c> 
-    ///             to handle a given <c>INotification</c> when notified by the <c>View</c>.
-    ///             </item>
-    ///             <item>Calling the <c>ICommand</c>'s <c>execute</c> 
-    ///             method, passing in the <c>INotification</c>.
-    ///             </item>
-    ///         </list>
-    ///     </para>
-    /// </remarks>
-    /// <seealso cref="INotification"/>
-    /// <seealso cref="ICommand"/>
     public interface IController
     {
         /// <summary>
-        /// Register a particular <c>ICommand</c> class as the handler 
-        ///  for a particular <c>INotification</c>.
+        /// 注册命令
         /// </summary>
-        /// <param name="notificationName">the name of the <c>INotification</c></param>
-        /// <param name="commandFunc">the FuncDelegate of the <c>ICommand</c></param>
+        /// <param name="notificationName">执行命令的消息名称</param>
+        /// <param name="commandFunc">此委托返回需要执行的命令类</param>
         void RegisterCommand(string notificationName, Func<ICommand> commandFunc);
 
         /// <summary>
-        /// Execute the <c>ICommand</c> previously registered as the
-        /// handler for <c>INotification</c>s with the given notification name.
+        /// 执行对应的命令
         /// </summary>
-        /// <param name="notification">the <c>INotification</c> to execute the associated <c>ICommand</c> for</param>
+        /// <param name="notification">消息体</param>
         void ExecuteCommand(INotification notification);
 
         /// <summary>
-        /// Remove a previously registered <c>ICommand</c> to <c>INotification</c> mapping.
+        /// 移除对应的命令
         /// </summary>
-        /// <param name="notificationName">the name of the <c>INotification</c> to remove the <c>ICommand</c> mapping for</param>
+        /// <param name="notificationName">执行命令的消息名称</param>
         void RemoveCommand(string notificationName);
 
         /// <summary>
-        /// Check if a Command is registered for a given Notification 
+        /// 是否有对应的命令
         /// </summary>
-        /// <param name="notificationName">whether a Command is currently registered for the given <c>notificationName</c>.</param>
+        /// <param name="notificationName">执行命令的消息名称</param>
         /// <returns></returns>
         bool HasCommand(string notificationName);
     }
