@@ -1,12 +1,10 @@
-﻿
-
-using PureMVC.Interfaces;
+﻿using PureMVC.Interfaces;
 using PureMVC.Patterns.Observer;
 
 namespace PureMVC.Patterns.Mediator
 {
     /// <summary>
-    /// 视图对应的中阶层
+    /// 视图对应的中介层
     /// </summary>
     public class Mediator : Notifier, IMediator, INotifier
     {

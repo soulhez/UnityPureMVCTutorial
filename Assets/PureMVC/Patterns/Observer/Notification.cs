@@ -1,6 +1,4 @@
-﻿
-using PureMVC.Interfaces;
-
+﻿using PureMVC.Interfaces;
 namespace PureMVC.Patterns.Observer
 {
     /// <summary>
