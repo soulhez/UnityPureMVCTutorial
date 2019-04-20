@@ -87,26 +87,25 @@ namespace PureMVC.Core
 
         public virtual void RegisterMediator(IMediator mediator)
         {
-            // do not allow re-registration (you must to removeMediator fist)
-            // Register the Mediator for retrieval by name
-            if(mediatorMap.TryAdd(mediator.MediatorName, mediator))
+            //不允许重复注册，因为以中介名称为Key
+            if (mediatorMap.TryAdd(mediator.MediatorName, mediator))
             {
-                // Get Notification interests, if any.
+                // 获得此Mediator中 视图需要关注的消息列表
                 string[] interests = mediator.ListNotificationInterests();
 
-                // Register Mediator as an observer for each notification of interests
+                // 判断是否有消息需要注册
                 if (interests.Length > 0)
                 {
-                    // Create Observer referencing this mediator's handlNotification method
+                    // 获取对应Mediator中HandleNotification函数的引用，实例化一个Observer
                     IObserver observer = new Observer(mediator.HandleNotification, mediator);
 
-                    // Register Mediator as Observer for its list of Notification interests
+                    // 根据消息列表的长度创建对应数量的消息观察者
                     for (int i = 0; i < interests.Length; i++)
                     {
                         RegisterObserver(interests[i], observer);
                     }
                 }
-                // alert the mediator that it has been registered
+                // 注册对应Mediator后的回调
                 mediator.OnRegister();
             }
         }
