@@ -46,7 +46,7 @@ namespace PureMVC.Tutorial
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                GlobalDataProxy globalDataProxy = (GlobalDataProxy)applicationFacade.RetrieveProxy(GlobalDataProxy.NAME);
+                GlobalDataProxy globalDataProxy = (GlobalDataProxy)ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME);
                 globalDataProxy.SerializeData();
                 this.Log("按键1");
             }
