@@ -9,7 +9,7 @@ namespace PureMVC.Tutorial
 {
     public class ApplicationFacade : Facade
     {
-        public static IFacade Instance
+        public static ApplicationFacade Instance
         {
             get
             {

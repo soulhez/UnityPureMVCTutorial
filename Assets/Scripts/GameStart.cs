@@ -16,21 +16,20 @@ namespace PureMVC.Tutorial
 {
     public class GameStart : MonoBehaviour
     {
-        public ApplicationFacade applicationFacade = null;
         private void Awake()
         {
             UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
-            applicationFacade = new ApplicationFacade();
-            applicationFacade.StartUpHandle();
+
+            ApplicationFacade.Instance.StartUpHandle();
         }
         void Start()
         {
-            applicationFacade.GameStartHandle();
+            ApplicationFacade.Instance.GameStartHandle();
         }
 
         private void OnDestroy()
         {
-            applicationFacade.RemoveProxy(GlobalDataProxy.NAME);
+            ApplicationFacade.Instance.RemoveProxy(GlobalDataProxy.NAME);
         }
 
         private void OnDisable()
