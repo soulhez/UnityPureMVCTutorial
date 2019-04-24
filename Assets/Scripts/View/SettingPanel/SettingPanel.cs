@@ -66,8 +66,6 @@ namespace PureMVC.Tutorial
             closeButton = transform.Find("closeButton").GetComponent<AnimatedButton>();
             musicBg = transform.Find("MusicImage/BGImage").gameObject;
             soundBg = transform.Find("SoundImage/BGImage").gameObject;
-            
-
         }
 
 

@@ -69,26 +69,7 @@ namespace PureMVC.Tutorial
             //播放音效
             ManagerFacade.Instance.PlayMusic("ComplimentText");
 
-            switch (currencyType)
-            {
-                case CurrencyType.Gold:
-                    {
-                        ApplicationFacade.Instance.SendNotification(Notification.ChangeGlodCup, int.Parse(numberText.text));
-                    }
-                    break;
-                case CurrencyType.Silver:
-                    {
-                        ApplicationFacade.Instance.SendNotification(Notification.ChangeSilverCup, int.Parse(numberText.text));
-                    }
-                    break;
-                case CurrencyType.Bronze:
-                    {
-                        ApplicationFacade.Instance.SendNotification(Notification.ChangeBronzeCup, int.Parse(numberText.text));
-                    }
-                    break;
-                default:
-                    break;
-            }
+            ApplicationFacade.Instance.SendNotification(Notification.CostCupCommond, new CostCupCommond.Data(currencyType, int.Parse(numberText.text)));
         }
     }
 }

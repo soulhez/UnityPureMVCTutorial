@@ -17,7 +17,8 @@ namespace PureMVC.Tutorial
 {
     public enum CurrencyType
     {
-        Gold=1,
+        None,
+        Gold =1,
         Silver=2,
         Bronze=3
     }

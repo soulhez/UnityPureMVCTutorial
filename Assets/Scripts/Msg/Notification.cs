@@ -20,6 +20,9 @@ namespace PureMVC.Tutorial
         public const string StartUp = "StartUp";
         public const string GameStart = "GameStart";
 
+        //*********************【Global】*********************
+         public const string CostCupCommond = "ConstCupCommond";
+
         //*********************【SettingPanel】*********************
         public const string SettingToHomeCommond = "SettingToHomeCommond";
 
@@ -33,6 +36,7 @@ namespace PureMVC.Tutorial
         public const string ChangeGlodCup = "ChangeGlodCup";
         public const string ChangeSilverCup = "ChangeSilverCup";
         public const string ChangeBronzeCup = "ChangeBronzeCup";
+        public const string ChangeCurrencyData = "ChangeCurrencyData";
         public const string CloseCurrencyPanel = "CloseCurrencyPanel";
 
         //*********************【VirtualNetServer】*********************

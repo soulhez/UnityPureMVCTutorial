@@ -27,6 +27,7 @@ namespace PureMVC.Tutorial
             base.InitializeController();
             RegisterCommand(Notification.StartUp, () => new StartupCommand());
             RegisterCommand(Notification.GameStart, () => new GameStartCommand());
+            RegisterCommand(Notification.CostCupCommond, () => new CostCupCommond());
         }
 
         protected override void InitializeModel()

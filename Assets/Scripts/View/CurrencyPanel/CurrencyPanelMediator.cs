@@ -49,26 +49,21 @@ namespace PureMVC.Tutorial
             {
                 tempNumber =(int) notification.Body;
             }
-            GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
-            GlobalData gloalData = gloalDataProxy.GetGlobalData;
             switch (notification.Name)
             {
                 case Notification.ChangeGlodCup:
                     {
-                        gloalData.GoldCup = gloalData.GoldCup - tempNumber;
-                        GetCurrencyPanel.ChangeCup(CurrencyType.Gold, gloalData.GoldCup);
+                        GetCurrencyPanel.ChangeCup(CurrencyType.Gold, tempNumber);
                         break;
                     }
                 case Notification.ChangeSilverCup:
                     {
-                        gloalData.SilverCup = gloalData.SilverCup - tempNumber;
-                        GetCurrencyPanel.ChangeCup(CurrencyType.Silver, gloalData.SilverCup);
+                        GetCurrencyPanel.ChangeCup(CurrencyType.Silver, tempNumber);
                         break;
                     }
                 case Notification.ChangeBronzeCup:
                     {
-                        gloalData.BronzeCup = gloalData.BronzeCup - tempNumber;
-                        GetCurrencyPanel.ChangeCup(CurrencyType.Bronze, gloalData.BronzeCup);
+                        GetCurrencyPanel.ChangeCup(CurrencyType.Bronze, tempNumber);
                         break;
                     }
                 case Notification.CloseCurrencyPanel:
