@@ -24,7 +24,7 @@ namespace PureMVC.Tutorial
         {
         }
 
-        public SettingPanel GetSettingPanel
+        protected SettingPanel GetSettingPanel
         {
             get
             {
@@ -44,11 +44,11 @@ namespace PureMVC.Tutorial
             GetSettingPanel.SoundSliderPointerDownAction = SoundSliderPointerDownActionHandle;
         }
 
-        private void MusicSliderPointerDownActionHandle(BaseEventData obj)
+        protected void MusicSliderPointerDownActionHandle(BaseEventData obj)
         {
             ManagerFacade.Instance.PlayMusic("Plop");
         }
-        private void SoundSliderPointerDownActionHandle(BaseEventData obj)
+        protected void SoundSliderPointerDownActionHandle(BaseEventData obj)
         {
             ManagerFacade.Instance.PlayMusic("Plop");
         }
@@ -63,7 +63,7 @@ namespace PureMVC.Tutorial
             GetSettingPanel.SoundSliderChangeAction = null;
         }
 
-        public void CloseButtonActionHandle()
+        protected void CloseButtonActionHandle()
         {
             //播放音效
             ManagerFacade.Instance.PlayMusic("Button");
@@ -72,7 +72,7 @@ namespace PureMVC.Tutorial
             SendNotification(Notification.OpenHomePanel, null, null);
         }
 
-        public void BoyToggleActionHandle(bool tempBool)
+        protected void BoyToggleActionHandle(bool tempBool)
         {
             if (tempBool)
             {
@@ -83,7 +83,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void GrilToggleActionHandle(bool tempBool)
+        protected void GrilToggleActionHandle(bool tempBool)
         {
             if (tempBool)
             {
@@ -94,7 +94,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void MusicSliderActionHandle(float tempVolume)
+        protected void MusicSliderActionHandle(float tempVolume)
         {
             GetSettingPanel.tempMusicVolume = tempVolume;
             if (tempVolume <= 0)
@@ -107,7 +107,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void SoundSliderActionHandle(float tempVolume)
+        protected void SoundSliderActionHandle(float tempVolume)
         {
             GetSettingPanel.tempSoundVolume = tempVolume;
             if (tempVolume <= 0)

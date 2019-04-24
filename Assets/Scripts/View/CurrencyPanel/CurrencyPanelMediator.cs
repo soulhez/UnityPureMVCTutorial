@@ -23,7 +23,7 @@ namespace PureMVC.Tutorial
         }
 
 
-        public CurrencyPanel GetCurrencyPanel
+        protected CurrencyPanel GetCurrencyPanel
         {
             get
             {

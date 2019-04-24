@@ -22,7 +22,7 @@ namespace PureMVC.Tutorial
         {
         }
 
-        public StorePanel GetStorePanel
+        protected StorePanel GetStorePanel
         {
             get
             {
@@ -39,7 +39,7 @@ namespace PureMVC.Tutorial
             CreatItem();
         }
 
-        public void CreatItem()
+        protected void CreatItem()
         {
             GlobalDataProxy gloalDataProxy = ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME) as GlobalDataProxy;
             GlobalData gloalData = gloalDataProxy.GetGlobalData;
@@ -62,7 +62,7 @@ namespace PureMVC.Tutorial
             GetStorePanel.warmThemeToggleAction = null;
         }
 
-        public void ColdThemeToggleActionHandle(bool tempIs)
+        protected void ColdThemeToggleActionHandle(bool tempIs)
         {
             if (tempIs)
             {
@@ -73,7 +73,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void WarmThemeToggleActionHandle(bool tempIs)
+        protected void WarmThemeToggleActionHandle(bool tempIs)
         {
             if (tempIs)
             {
@@ -84,7 +84,7 @@ namespace PureMVC.Tutorial
             }
         }
 
-        public void CloseOnClickActionHandle()
+        protected void CloseOnClickActionHandle()
         {
             //播放音效
             ManagerFacade.Instance.PlayMusic("Button");

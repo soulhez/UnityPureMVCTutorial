@@ -21,7 +21,7 @@ namespace PureMVC.Tutorial
         {
         }
 
-        public HomePanel GetHomePanel
+        protected HomePanel GetHomePanel
         {
             get
             {
@@ -32,8 +32,8 @@ namespace PureMVC.Tutorial
         public override void OnRegister()
         {
             base.OnRegister();
-            GetHomePanel.PlayAction += PlayActionHandle;
-            GetHomePanel.SettingAction += SettingActionHandle;
+            GetHomePanel.PlayAction = PlayActionHandle;
+            GetHomePanel.SettingAction = SettingActionHandle;
         }
 
 
@@ -45,7 +45,7 @@ namespace PureMVC.Tutorial
         }
 
 
-        public void PlayActionHandle()
+        protected void PlayActionHandle()
         {
             //播放音效
             ManagerFacade.Instance.PlayMusic("Button");
@@ -53,7 +53,7 @@ namespace PureMVC.Tutorial
             SendNotification(Notification.HomeToStoreCommond,null,null) ;
             SendNotification(Notification.CloseHomePanel, null, null);
         }
-        public void SettingActionHandle()
+        protected void SettingActionHandle()
         {
             //播放音效
             ManagerFacade.Instance.PlayMusic("Button");
