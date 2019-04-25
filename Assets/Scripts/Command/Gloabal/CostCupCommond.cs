@@ -19,13 +19,13 @@ namespace PureMVC.Tutorial
     {
         public class Data
         {
-            public Data(CurrencyType tempCurrencyType,int tempCupNumber)
+            public Data(CurrencyType tempCurrencyType,int tempCostCupNumber)
             {
                 currencyType = tempCurrencyType;
-                cupNumber = tempCupNumber;
+                costCupNumber = tempCostCupNumber;
             }
             public CurrencyType currencyType = CurrencyType.None;
-            public int cupNumber = 0;
+            public int costCupNumber = 0;
         }
         public override void Execute(INotification notification)
         {
@@ -38,21 +38,18 @@ namespace PureMVC.Tutorial
             }
 
             GlobalDataProxy globalDataProxy = (GlobalDataProxy)ApplicationFacade.Instance.RetrieveProxy(GlobalDataProxy.NAME);
+            globalDataProxy.CostCup(data.currencyType, data.costCupNumber);
             GlobalData GlobalData = globalDataProxy.GetGlobalData;
-
             switch (data.currencyType)
             {
 
                 case CurrencyType.Gold:
-                    GlobalData.GoldCup -= data.cupNumber;
                     ApplicationFacade.Instance.SendNotification(Notification.ChangeGlodCup, GlobalData.GoldCup);
                     break;
                 case CurrencyType.Silver:
-                    GlobalData.SilverCup -= data.cupNumber;
                     ApplicationFacade.Instance.SendNotification(Notification.ChangeSilverCup, GlobalData.SilverCup);
                     break;
                 case CurrencyType.Bronze:
-                    GlobalData.BronzeCup -= data.cupNumber;
                     ApplicationFacade.Instance.SendNotification(Notification.ChangeBronzeCup, GlobalData.BronzeCup);
                     break;
             }

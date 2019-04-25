@@ -66,6 +66,29 @@ namespace PureMVC.Tutorial
 
             Data = JsonMapper.ToObject<GlobalData>(jsonStr);
         }
+
+        public void CostCup(CurrencyType currencyType,int costCupNumber)
+        {
+            switch (currencyType)
+            {
+
+                case CurrencyType.Gold:
+                    {
+                        GetGlobalData.GoldCup -= costCupNumber;
+                    }
+                    break;
+                case CurrencyType.Silver:
+                    {
+                        GetGlobalData.SilverCup -= costCupNumber;
+                    }
+                    break;
+                case CurrencyType.Bronze:
+                    {
+                        GetGlobalData.BronzeCup -= costCupNumber;
+                    }
+                    break;
+            }
+        }
     }
 
     [Serializable]
