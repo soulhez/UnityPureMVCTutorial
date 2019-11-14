@@ -18,7 +18,7 @@ namespace PureMVC.Tutorial
 {
     public class SettingPanelMediator : Mediator
     {
-        public new static string NAME = "SettingPanelMediator";
+        public static new string NAME = "SettingPanelMediator";
 
         public SettingPanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {

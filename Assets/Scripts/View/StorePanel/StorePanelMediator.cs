@@ -17,7 +17,7 @@ namespace PureMVC.Tutorial
 {
     public class StorePanelMediator : Mediator
     {
-        public new static string NAME = "StorePanelMediator";
+        public static new string NAME = "StorePanelMediator";
         public StorePanelMediator(string mediatorName, object viewComponent = null) : base(mediatorName, viewComponent)
         {
         }

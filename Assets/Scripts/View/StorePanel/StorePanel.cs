@@ -17,7 +17,6 @@ namespace PureMVC.Tutorial
 {
     public class StorePanel :Panel
     {
-        public const string StorePanelMediatorName = "StorePanelMediator";
 
         #region Component
         [SerializeField]
@@ -109,11 +108,11 @@ namespace PureMVC.Tutorial
 
         protected override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new StorePanelMediator(StorePanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new StorePanelMediator(StorePanelMediator.NAME, this));
         }
         protected override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(StorePanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(StorePanelMediator.NAME);
         }
 
         #endregion

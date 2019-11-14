@@ -24,8 +24,6 @@ namespace PureMVC.Tutorial
     }
     public class CurrencyPanel : Panel
     {
-        public const string CurrencyPanelMediatorName = "CurrencyPanelMediator";
-
         #region Component
         [SerializeField]
         private Text goldText = null;
@@ -74,12 +72,12 @@ namespace PureMVC.Tutorial
 
         protected override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new CurrencyPanelMediator(CurrencyPanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new CurrencyPanelMediator(CurrencyPanelMediator.NAME, this));
         }
 
         protected override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(CurrencyPanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(CurrencyPanelMediator.NAME);
         }
 
         #endregion

@@ -16,7 +16,6 @@ namespace PureMVC.Tutorial
 {
     public class HomePanel : Panel
     {
-        public const string HomePanelMediatorName = "HomePanelMediator";
 
         #region Component
         [SerializeField]
@@ -67,12 +66,12 @@ namespace PureMVC.Tutorial
 
         protected sealed override void RegisterMediator()
         {
-            ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(HomePanelMediatorName, this));
+            ApplicationFacade.Instance.RegisterMediator(new HomePanelMediator(HomePanelMediator.NAME, this));
         }
 
         protected sealed override void UnRegisterMediator()
         {
-            ApplicationFacade.Instance.RemoveMediator(HomePanelMediatorName);
+            ApplicationFacade.Instance.RemoveMediator(HomePanelMediator.NAME);
         }
 
         #endregion
